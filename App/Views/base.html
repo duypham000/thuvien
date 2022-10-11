@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}{% endblock %}</title>
+    {% include "./Layout/cssImport.html" %} {% block css %}{% endblock %}
+  </head>
+  <body>
+    <div class="base-wrapper">
+      {% include "./Layout/header.html" %}
+      <div class="body-wrapper">{% block body %} {% endblock %}</div>
+    </div>
+    {% include "./Layout/sidebar.html" %} {% include "./Layout/footer.html" %}
+    {% include "./Layout/jsImport.html" %} {% block js %}{% endblock %}
+  </body>
+</html>

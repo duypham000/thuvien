@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Inter/static/Inter-Regular.ttf") format("tff");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/Inter/static/Inter-SemiBold.ttf") format("tff");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../fonts/Inter/static/Inter-ExtraBold.ttf") format("tff");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
+* {
+  font-family: "Inter";
+  font-weight: 400;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #0a0a0a;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+}
+
+.base-wrapper{
+  padding-left: 56px;
+  position: relative;
+}
+
+.body-wrapper{
+  margin-top: 80px;
+}
