@@ -50,3 +50,7 @@ body{
 .body-wrapper{
   margin-top: 80px;
 }
+
+.container{
+  max-width: 1440px;
+}
