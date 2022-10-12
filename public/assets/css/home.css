@@ -5,6 +5,7 @@
   overflow: hidden;
   margin: 1rem 0;
   height: 26rem;
+  width: 22.5rem;
   user-select: none;
 }
 .book-wrapper > .image {
