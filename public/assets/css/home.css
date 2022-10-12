@@ -1,0 +1,34 @@
+.book-wrapper {
+  display: block;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px 0;
+  height: 250px;
+  user-select: none;
+}
+
+.book-wrapper > .title {
+  position: absolute;
+  color: #ecf0f1;
+  bottom: 0px;
+  left: 50%;
+  padding-bottom: 10px;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    transparent 0,
+    rgba(0, 0, 0, 0.8) 67%,
+    rgba(0, 0, 0, 0.8)
+  );
+}
+
+.book-wrapper > .title:hover {
+  color: #3498db;
+}

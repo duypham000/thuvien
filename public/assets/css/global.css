@@ -43,6 +43,11 @@ body {
   height: 100%;
 }
 
+img {
+  width: 100%;
+  height: 100%;
+}
+
 .base-wrapper {
   padding-left: 56px;
   position: relative;
@@ -68,7 +73,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FFFFFF0D;
+  background: #ffffff0d;
   border-radius: 8px;
 }
 

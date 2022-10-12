@@ -23,4 +23,20 @@ class User extends \Core\Model
         $stmt = $db->query('SELECT id, name FROM users');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Insert a user into db
+     *
+     * @return bool
+     */
+    public static function insert($name)
+    {
+        try {
+            $db = static::getDB();
+            $db->query('INSERT INTO `users` (`id`, `name`) VALUES (NULL, "' . $name . '")');
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
 }
