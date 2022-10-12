@@ -7,6 +7,13 @@
   height: 250px;
   user-select: none;
 }
+.book-wrapper > .image > img {
+  transition: all 0.3s;
+}
+
+.book-wrapper:hover > .image > img {
+  transform: scale(1.2);
+}
 
 .book-wrapper > .title {
   position: absolute;

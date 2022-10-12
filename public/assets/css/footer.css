@@ -1,0 +1,17 @@
+.footer-wrapper {
+  padding-top: 80px;
+}
+.footer-wrapper .logo-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.footer-wrapper .logo-wrapper > .logo {
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+
+.footer-wrapper .logo-wrapper > .sub-logo {
+  font-weight: 600;
+  color: #ecf0f1;
+  font-size: 20px;
+}

@@ -9,8 +9,9 @@
     <div class="base-wrapper">
       {% include "./Layout/header.html" %}
       <div class="body-wrapper">{% block body %} {% endblock %}</div>
+      {% include "./Layout/footer.html" %}
     </div>
-    {% include "./Layout/sidebar.html" %} {% include "./Layout/footer.html" %}
-    {% include "./Layout/jsImport.html" %} {% block js %}{% endblock %}
+    {% include "./Layout/sidebar.html" %} {% include "./Layout/jsImport.html" %}
+    {% block js %}{% endblock %}
   </body>
 </html>
