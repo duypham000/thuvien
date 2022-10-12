@@ -20,7 +20,21 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        View::renderTemplate('Home/index.html', [
-        ]);
+        View::renderTemplate('Home/index.html', []);
+    }
+
+    /**
+     * Test post rest-api
+     *
+     * @return json
+     */
+    public function testPostApi()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            echo json_encode([
+                'status' => 'OK',
+                'data' => []
+            ]);
+        }
     }
 }
