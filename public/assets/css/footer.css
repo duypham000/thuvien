@@ -1,7 +1,7 @@
 .footer-wrapper {
   padding-top: 80px;
 }
-.footer-wrapper .logo-wrapper{
+.footer-wrapper .logo-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -14,4 +14,19 @@
   font-weight: 600;
   color: #ecf0f1;
   font-size: 20px;
+}
+
+.menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.menu-wrapper > * {
+  margin-bottom: 8px;
+}
+
+.menu-wrapper a {
+  color: #A7ADB2;
+  text-decoration: none;
 }
