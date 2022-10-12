@@ -5,12 +5,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 18px;
+  padding: 1.8rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   color: #e9ebec;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 2rem;
   position: fixed;
   z-index: 2;
   top: 0;
@@ -25,7 +25,7 @@
 .header > .nav > .nav-bar {
   display: flex;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 2rem;
 }
 
 .header > .nav > .nav-bar {
@@ -33,7 +33,7 @@
 }
 
 .header > .nav > .nav-bar > li {
-  padding: 6px 16px;
+  padding: 0.6rem 1.6rem;
 }
 
 .header > .nav > .nav-bar > li > a {
@@ -45,7 +45,7 @@
   text-transform: uppercase;
   font-weight: 800;
   color: #ecf0f1;
-  font-size: 20px;
+  font-size: 2rem;
   text-decoration: none;
 }
 
@@ -59,17 +59,17 @@
 }
 
 .search {
-  min-width: 416px;
+  min-width: 41.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 17px;
+  padding: 0.6rem 1.7rem;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
+  border-radius: 2.4rem;
 }
 
 .search > input {
-  width: calc(100% - 28px);
+  width: calc(100% - 2.8rem);
   outline: none;
   background-color: transparent;
   margin: 0;
@@ -81,5 +81,5 @@
 
 .search > i {
   color: #999999;
-  margin-right: 12px;
+  margin-right: 1.2rem;
 }

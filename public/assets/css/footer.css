@@ -1,29 +1,29 @@
 .footer-wrapper {
-  padding-top: 80px;
+  padding-top: 8rem;
 }
 .footer-wrapper .logo-wrapper {
   display: flex;
   flex-direction: column;
 }
 .footer-wrapper .logo-wrapper > .logo {
-  font-size: 30px;
-  margin-bottom: 16px;
+  font-size: 3rem;
+  margin-bottom: 1.6rem;
 }
 
 .footer-wrapper .logo-wrapper > .sub-logo {
   font-weight: 600;
   color: #ecf0f1;
-  font-size: 20px;
+  font-size: 2rem;
 }
 
 .menu-wrapper {
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 5rem;
 }
 
 .menu-wrapper > * {
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
 }
 
 .menu-wrapper a {

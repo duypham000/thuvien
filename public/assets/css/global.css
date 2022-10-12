@@ -50,12 +50,12 @@ img {
 }
 
 .base-wrapper {
-  padding-left: 56px;
+  padding-left: 5.6rem;
   position: relative;
 }
 
 .body-wrapper {
-  margin-top: 80px;
+  margin-top: 8rem;
 }
 
 .container {
@@ -64,7 +64,7 @@ img {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 0.5rem;
 }
 
 /* Track */
