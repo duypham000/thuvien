@@ -21,6 +21,7 @@
 .sidebar > a > span {
   color: #999999;
   width: 3.2rem;
+  font-size: 1.5rem;
   height: 3.2rem;
   display: flex;
   align-items: center;
