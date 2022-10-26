@@ -45,6 +45,28 @@ class Home extends \Core\Controller
                         "href" => "#",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ],
+                ],
+                'categories' => [
+                    [
+                        "title" => "Kinh dị",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg"
+                    ],
+                    [
+                        "title" => "Trinh thám",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg"
+                    ],
+                    [
+                        "title" => "Lãng mạn",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg"
+                    ],
+                    [
+                        "title" => "Tiểu thuyết ngắn",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg"
+                    ]
                 ]
             ]
         ]);

@@ -23,7 +23,8 @@
               Ngửi thấy gì không? Mùi của Tết đó!
             </h3>
             <span class="sub-heading-1 description">
-              Tặng phong bao lì xì ngẫu nhiên cho 50 bạn may mắn nhất khi mua đồ ở quầy, tới thử vận may ngay nào!!!</span
+              Tặng phong bao lì xì ngẫu nhiên cho 50 bạn may mắn nhất khi mua đồ
+              ở quầy, tới thử vận may ngay nào!!!</span
             >
           </a>
         </div>
@@ -40,9 +41,18 @@
           </a>
         </div>
       </div>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
-  <div class="grid-wrapper">
+  <div class="categories">
+    {% for cate in data.categories %}
+    <a class="category-wrapper" href="{{cate.href}}">
+      <img src="{{cate.thumble}}" alt="" />
+      <div class="heading-3">{{cate.title}}</div>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="grid-wrapper list-wrapper">
     <h2 class="heading-2">Mới nhất</h2>
     <div class="row justify-content-start align-items-center">
       {% for book in data.newBook %}
@@ -57,7 +67,7 @@
       {% endfor %}
     </div>
   </div>
-  <div class="grid-wrapper">
+  <div class="grid-wrapper list-wrapper">
     <h2 class="heading-2">Bạn có thể thích</h2>
     <div class="row justify-content-start align-items-center">
       {% for book in data.newBook %}
@@ -72,7 +82,7 @@
       {% endfor %}
     </div>
   </div>
-  <div class="grid-wrapper">
+  <div class="grid-wrapper list-wrapper">
     <h2 class="heading-2">Đang theo dõi</h2>
     <div class="row justify-content-start align-items-center">
       {% for book in data.newBook %}
