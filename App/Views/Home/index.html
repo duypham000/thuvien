@@ -1,68 +1,97 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block body %}
 
 <div class="container">
+  <div class="bannerHeader">
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <a class="slider-wrapper" href="#">
+            <img src="/assets/images/banner1.jpg" alt="banner1" />
+            <h3 class="heading-1 slider-title">
+              Mừng hallowen, tưng bừng khuyến mãi
+            </h3>
+            <span class="sub-heading-1 description">
+              Giảm 20% cho đầu sách thể loại kinh dị</span
+            >
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a class="slider-wrapper" href="#">
+            <img src="/assets/images/banner2.jpg" alt="banner1" />
+            <h3 class="heading-1 slider-title">
+              Ngửi thấy gì không? Mùi của Tết đó!
+            </h3>
+            <span class="sub-heading-1 description">
+              Tặng phong bao lì xì ngẫu nhiên cho 50 bạn may mắn nhất khi mua đồ ở quầy, tới thử vận may ngay nào!!!</span
+            >
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a class="slider-wrapper" href="#">
+            <img src="/assets/images/banner3.jpg" alt="banner2" />
+            <h3 class="heading-1 slider-title">
+              Giáng sinh đang tới gần, cùng nhau merry christmas!
+            </h3>
+            <span class="sub-heading-1 description">
+              Tặng kèm phụ kiện giáng sinh ngẫu nhiên khi mượn 2 đầu sách trở
+              lên, số lượng có hạn!</span
+            >
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="grid-wrapper">
-    <h2 class="heading-2">Heading 2</h2>
+    <h2 class="heading-2">Mới nhất</h2>
     <div class="row justify-content-start align-items-center">
+      {% for book in data.newBook %}
       <div class="book">
-        <a href="#" class="book-wrapper">
+        <a href="{{book.href}}" class="book-wrapper">
           <div class="image">
-            <img src="/assets/images/book-sample.jpg" alt="" />
+            <img src="{{book.thumble}}" alt="" />
           </div>
-          <div class="heading-3 title">Hành tinh song song</div>
+          <div class="heading-3 title">{{book.title}}</div>
         </a>
       </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="grid-wrapper">
+    <h2 class="heading-2">Bạn có thể thích</h2>
+    <div class="row justify-content-start align-items-center">
+      {% for book in data.newBook %}
       <div class="book">
-        <a href="#" class="book-wrapper">
+        <a href="{{book.href}}" class="book-wrapper">
           <div class="image">
-            <img src="/assets/images/book-sample.jpg" alt="" />
+            <img src="{{book.thumble}}" alt="" />
           </div>
-          <div class="heading-3 title">Hành tinh song song</div>
+          <div class="heading-3 title">{{book.title}}</div>
         </a>
       </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="grid-wrapper">
+    <h2 class="heading-2">Đang theo dõi</h2>
+    <div class="row justify-content-start align-items-center">
+      {% for book in data.newBook %}
       <div class="book">
-        <a href="#" class="book-wrapper">
+        <a href="{{book.href}}" class="book-wrapper">
           <div class="image">
-            <img src="/assets/images/book-sample.jpg" alt="" />
+            <img src="{{book.thumble}}" alt="" />
           </div>
-          <div class="heading-3 title">Hành tinh song song</div>
+          <div class="heading-3 title">{{book.title}}</div>
         </a>
       </div>
-      <div class="book">
-        <a href="#" class="book-wrapper">
-          <div class="image">
-            <img src="/assets/images/book-sample.jpg" alt="" />
-          </div>
-          <div class="heading-3 title">Hành tinh song song</div>
-        </a>
-      </div>
-      <div class="book">
-        <a href="#" class="book-wrapper">
-          <div class="image">
-            <img src="/assets/images/book-sample.jpg" alt="" />
-          </div>
-          <div class="heading-3 title">Hành tinh song song</div>
-        </a>
-      </div>
-      <div class="book">
-        <a href="#" class="book-wrapper">
-          <div class="image">
-            <img src="/assets/images/book-sample.jpg" alt="" />
-          </div>
-          <div class="heading-3 title">Hành tinh song song</div>
-        </a>
-      </div>
-      <div class="book">
-        <a href="#" class="book-wrapper">
-          <div class="image">
-            <img src="/assets/images/book-sample.jpg" alt="" />
-          </div>
-          <div class="heading-3 title">Hành tinh song song</div>
-        </a>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
 {% endblock %} {% block css %}
+<link rel="stylesheet" href="/assets/libs/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/assets/css/home.css" />
+{% endblock %} {% block js %}
+<script src="/assets/libs/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/js/home.js"></script>
 {% endblock %}

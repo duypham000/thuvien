@@ -20,7 +20,34 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        View::renderTemplate('Home/index.html', []);
+        View::renderTemplate('Home/index.html', [
+            'status' => 'OK',
+            'data' => [
+                'newBook' => [
+                    [
+                        "title" => "Hành tinh song song",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg",
+                    ], [
+                        "title" => "Hành tinh cho kẻ nghĩ nhiều",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg",
+                    ], [
+                        "title" => "Hiệu ứng chim mồi",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg",
+                    ], [
+                        "title" => "Bạn chẳng thông minh lắm đâu",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg",
+                    ], [
+                        "title" => "Thiên nga đen",
+                        "href" => "#",
+                        "thumble" => "/assets/images/book-sample.jpg",
+                    ],
+                ]
+            ]
+        ]);
     }
 
     /**
@@ -33,7 +60,31 @@ class Home extends \Core\Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode([
                 'status' => 'OK',
-                'data' => []
+                'data' => [
+                    'sampleBook' => [
+                        [
+                            "title" => "Hành tinh song song",
+                            "href" => "#",
+                            "thumble" => "/assets/images/book-sample.jpg",
+                        ], [
+                            "title" => "Hành tinh cho kẻ nghĩ nhiều",
+                            "href" => "#",
+                            "thumble" => "/assets/images/book-sample.jpg",
+                        ], [
+                            "title" => "Hiệu ứng chim mồi",
+                            "href" => "#",
+                            "thumble" => "/assets/images/book-sample.jpg",
+                        ], [
+                            "title" => "Bạn chẳng thông minh lắm đâu",
+                            "href" => "#",
+                            "thumble" => "/assets/images/book-sample.jpg",
+                        ], [
+                            "title" => "Thiên nga đen",
+                            "href" => "#",
+                            "thumble" => "/assets/images/book-sample.jpg",
+                        ],
+                    ]
+                ]
             ]);
         }
     }

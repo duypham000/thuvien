@@ -1,4 +1,4 @@
-.book{
+.book {
   width: fit-content;
 }
 
@@ -51,4 +51,40 @@
 
 .book-wrapper > .title:hover {
   color: #3498db;
+}
+
+.swiper {
+  width: 100%;
+  height: 50rem;
+}
+.slider-wrapper {
+  background-color: white;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  border-radius: 8px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.slider-wrapper:hover{
+  color: white;
+}
+
+.slider-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+.slider-wrapper > img {
+  border-radius: 8px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
 }
