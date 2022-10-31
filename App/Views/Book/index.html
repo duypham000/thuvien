@@ -1,7 +1,31 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block body %}
 
 <div class="container">
-  
+  <div class="book-wrapper">
+    <div class="row">
+      <div class="col-4">
+        <div class="book-image">
+          <img src="{{data.detailBook.thumble}}" alt="" />
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="detail-wrapper">
+          <div class="heading-2">{{data.detailBook.title}}</div>
+          <div class="body-2 description">
+            {{data.detailBook.description | raw}}
+          </div>
+          <div class="sub-heading-2 author">
+            <span>Tác giả</span>: <a href="#">{{data.detailBook.author}}</a>
+          </div>
+          <div class="sub-heading-2 categories">
+            <span>Thể loại</span>: {% for cate in data.detailBook.categories %}
+            <a href="#" class="category">{{cate}}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %} {% block css %}
 <link rel="stylesheet" href="/assets/css/book.css" />

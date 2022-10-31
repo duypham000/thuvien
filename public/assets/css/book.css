@@ -1,0 +1,49 @@
+.book-wrapper {
+}
+
+.book-wrapper .book-image {
+  width: 42rem;
+  height: 48rem;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.book-wrapper .book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s;
+}
+
+.book-wrapper .book-image:hover img {
+  transform: scale(1.2);
+}
+
+.book-wrapper .author,
+.book-wrapper .categories {
+  margin-top: 1.8rem;
+}
+.book-wrapper .author span,
+.book-wrapper .categories span {
+  font-weight: 800;
+}
+.book-wrapper .categories a {
+  user-select: none;
+  color: #ffffff;
+  background-color: #34495e;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  text-decoration: none;
+}
+
+.book-wrapper .author a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.book-wrapper .author a:hover {
+  color: #3498db;
+}
+
+.book-wrapper .categories .category:hover {
+  background-color: #3498db;
+}
