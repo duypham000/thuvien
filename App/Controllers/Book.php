@@ -42,6 +42,7 @@ class Book extends \Core\Controller
           "followCount" => 6,
           "countLeft" => 15,
           "total" => 20,
+          "totalGet" => 400,
         ],
       ]
     ]);

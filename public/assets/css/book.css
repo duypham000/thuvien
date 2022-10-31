@@ -47,3 +47,32 @@
 .book-wrapper .categories .category:hover {
   background-color: #3498db;
 }
+
+.book-wrapper .acchive-wrapper {
+  padding: 1.6rem 0;
+  margin-top: 3.2rem;
+  border-top: #bdc3c7 1px solid;
+  border-bottom: #bdc3c7 1px solid;
+}
+
+.book-wrapper .acchive-wrapper .acchive {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-wrapper .acchive-wrapper .acchive div {
+  font-weight: 800;
+}
+
+.book-wrapper .tool-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-wrapper .tool-wrapper a {
+  margin-top: 1.2rem;
+  padding: 1.4rem;
+  max-width: 42rem;
+}

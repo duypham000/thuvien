@@ -7,6 +7,14 @@
         <div class="book-image">
           <img src="{{data.detailBook.thumble}}" alt="" />
         </div>
+        <div class="tool-wrapper">
+          <a href="#" class="btn btn-sm btn-outline-primary sub-heading-2"
+            >Đăng ký mượn sách</a
+          >
+          <a href="#" class="btn btn-sm btn-outline-success sub-heading-2"
+            >Thêm vào kệ sách</a
+          >
+        </div>
       </div>
       <div class="col-8">
         <div class="detail-wrapper">
@@ -23,6 +31,24 @@
             {% endfor %}
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row acchive-wrapper">
+      <div class="col acchive">
+        <div class="sub-heading-2">Lượt theo dõi</div>
+        <p class="sub-heading-2">{{data.detailBook.followCount}}</p>
+      </div>
+      <div class="col acchive">
+        <div class="sub-heading-2">Tổng số sách</div>
+        <p class="sub-heading-2">{{data.detailBook.total}}</p>
+      </div>
+      <div class="col acchive">
+        <div class="sub-heading-2">Số sách có thể mượn</div>
+        <p class="sub-heading-2">{{data.detailBook.countLeft}}</p>
+      </div>
+      <div class="col acchive">
+        <div class="sub-heading-2">Tổng lượt mượn</div>
+        <p class="sub-heading-2">{{data.detailBook.totalGet}}</p>
       </div>
     </div>
   </div>
