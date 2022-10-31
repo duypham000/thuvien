@@ -27,6 +27,8 @@ $router = new Core\Router();
 
 // Add the routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
+// config variable route
+$router->add('book/{action}/{id:\d+}', ['controller' => 'Book']);
 $router->add('{controller}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 
