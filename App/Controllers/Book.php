@@ -44,6 +44,29 @@ class Book extends \Core\Controller
           "total" => 20,
           "totalGet" => 400,
         ],
+        'books' => [
+          [
+            "title" => "Hành tinh song song",
+            "href" => "/book/index/15",
+            "thumble" => "/assets/images/book-sample.jpg",
+          ], [
+            "title" => "Hành tinh cho kẻ nghĩ nhiều",
+            "href" => "/book/index/15",
+            "thumble" => "/assets/images/book-sample.jpg",
+          ], [
+            "title" => "Hiệu ứng chim mồi",
+            "href" => "/book/index/15",
+            "thumble" => "/assets/images/book-sample.jpg",
+          ], [
+            "title" => "Bạn chẳng thông minh lắm đâu",
+            "href" => "/book/index/15",
+            "thumble" => "/assets/images/book-sample.jpg",
+          ], [
+            "title" => "Thiên nga đen",
+            "href" => "/book/index/15",
+            "thumble" => "/assets/images/book-sample.jpg",
+          ],
+        ],
       ]
     ]);
   }

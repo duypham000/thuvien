@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block body %}
 
 <div class="container">
-  <div class="book-wrapper">
+  <div class="book-main-detail-wrapper">
     <div class="row">
       <div class="col-4">
         <div class="book-image">
@@ -52,7 +52,49 @@
       </div>
     </div>
   </div>
+  <div class="slide-wrapper">
+    <h2 class="heading-3">Có thể bạn cũng sẽ thích</h2>
+    <div class="swiper hot-swiper">
+      <div class="swiper-wrapper">
+        {% for book in data.books %}
+        <div class="swiper-slide">
+          <div class="book">
+            <a href="{{book.href}}" class="book-wrapper">
+              <div class="image">
+                <img src="{{book.thumble}}" alt="" />
+              </div>
+              <div class="heading-3 title">{{book.title}}</div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="slide-wrapper">
+    <h2 class="heading-3">Sách cùng thể loại</h2>
+    <div class="swiper hot-swiper">
+      <div class="swiper-wrapper">
+        {% for book in data.books %}
+        <div class="swiper-slide">
+          <div class="book">
+            <a href="{{book.href}}" class="book-wrapper">
+              <div class="image">
+                <img src="{{book.thumble}}" alt="" />
+              </div>
+              <div class="heading-3 title">{{book.title}}</div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %} {% block css %}
+<link rel="stylesheet" href="/assets/libs/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/assets/css/book.css" />
-{% endblock %} {% block js %} {% endblock %}
+{% endblock %} {% block js %}
+<script src="/assets/libs/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/js/book.js"></script>
+{% endblock %}

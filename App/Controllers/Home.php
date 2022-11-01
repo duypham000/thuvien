@@ -26,23 +26,23 @@ class Home extends \Core\Controller
                 'newBook' => [
                     [
                         "title" => "Hành tinh song song",
-                        "href" => "#",
+                        "href" => "/book/index/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ], [
                         "title" => "Hành tinh cho kẻ nghĩ nhiều",
-                        "href" => "#",
+                        "href" => "/book/index/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ], [
                         "title" => "Hiệu ứng chim mồi",
-                        "href" => "#",
+                        "href" => "/book/index/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ], [
                         "title" => "Bạn chẳng thông minh lắm đâu",
-                        "href" => "#",
+                        "href" => "/book/index/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ], [
                         "title" => "Thiên nga đen",
-                        "href" => "#",
+                        "href" => "/book/index/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ],
                 ],

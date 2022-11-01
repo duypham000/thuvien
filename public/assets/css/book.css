@@ -1,33 +1,33 @@
-.book-wrapper {
+.book-main-detail-wrapper {
 }
 
-.book-wrapper .book-image {
+.book-main-detail-wrapper .book-image {
   width: 42rem;
   height: 48rem;
   overflow: hidden;
   border-radius: 8px;
 }
 
-.book-wrapper .book-image img {
+.book-main-detail-wrapper .book-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 0.3s;
 }
 
-.book-wrapper .book-image:hover img {
+.book-main-detail-wrapper .book-image:hover img {
   transform: scale(1.2);
 }
 
-.book-wrapper .author,
-.book-wrapper .categories {
+.book-main-detail-wrapper .author,
+.book-main-detail-wrapper .categories {
   margin-top: 1.8rem;
 }
-.book-wrapper .author span,
-.book-wrapper .categories span {
+.book-main-detail-wrapper .author span,
+.book-main-detail-wrapper .categories span {
   font-weight: 800;
 }
-.book-wrapper .categories a {
+.book-main-detail-wrapper .categories a {
   user-select: none;
   color: #ffffff;
   background-color: #34495e;
@@ -36,43 +36,51 @@
   text-decoration: none;
 }
 
-.book-wrapper .author a {
+.book-main-detail-wrapper .author a {
   color: #ffffff;
   text-decoration: none;
 }
-.book-wrapper .author a:hover {
+.book-main-detail-wrapper .author a:hover {
   color: #3498db;
 }
 
-.book-wrapper .categories .category:hover {
+.book-main-detail-wrapper .categories .category:hover {
   background-color: #3498db;
 }
 
-.book-wrapper .acchive-wrapper {
+.book-main-detail-wrapper .acchive-wrapper {
   padding: 1.6rem 0;
   margin-top: 3.2rem;
   border-top: #bdc3c7 1px solid;
   border-bottom: #bdc3c7 1px solid;
 }
 
-.book-wrapper .acchive-wrapper .acchive {
+.book-main-detail-wrapper .acchive-wrapper .acchive {
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
 }
 
-.book-wrapper .acchive-wrapper .acchive div {
+.book-main-detail-wrapper .acchive-wrapper .acchive div {
   font-weight: 800;
 }
 
-.book-wrapper .tool-wrapper {
+.book-main-detail-wrapper .tool-wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.book-wrapper .tool-wrapper a {
+.book-main-detail-wrapper .tool-wrapper a {
   margin-top: 1.2rem;
   padding: 1.4rem;
   max-width: 42rem;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.slide-wrapper {
+  margin-top: 2.4rem;
 }
