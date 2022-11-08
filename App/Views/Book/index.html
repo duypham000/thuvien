@@ -1,6 +1,18 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block body %}
 
 <div class="container">
+  <div class="navigation-wrapper">
+    <a href="/">
+      <i class="fa-solid fa-house"></i>
+      <span class="sub-heading-4">Trang chủ</span>
+    </a>
+    {% for locate in location %}
+    <span><i class="fas fa-greater-than"></i></span>
+    <a href="{{locate.url}}">
+      <span class="sub-heading-4">{{locate.label}}</span>
+    </a>
+    {% endfor %}
+  </div>
   <div class="book-main-detail-wrapper">
     <div class="row">
       <div class="col-4">

@@ -26,45 +26,45 @@ class Home extends \Core\Controller
                 'newBook' => [
                     [
                         "title" => "Hành tinh song song",
-                        "href" => "/book/index/15",
+                        "href" => "/sach/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ], [
                         "title" => "Hành tinh cho kẻ nghĩ nhiều",
-                        "href" => "/book/index/15",
+                        "href" => "/sach/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ], [
                         "title" => "Hiệu ứng chim mồi",
-                        "href" => "/book/index/15",
+                        "href" => "/sach/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ], [
                         "title" => "Bạn chẳng thông minh lắm đâu",
-                        "href" => "/book/index/15",
+                        "href" => "/sach/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ], [
                         "title" => "Thiên nga đen",
-                        "href" => "/book/index/15",
+                        "href" => "/sach/15",
                         "thumble" => "/assets/images/book-sample.jpg",
                     ],
                 ],
                 'categories' => [
                     [
                         "title" => "Kinh dị",
-                        "href" => "#",
+                        "href" => "/danh-sach/theloai/kinhdi",
                         "thumble" => "/assets/images/book-sample.jpg"
                     ],
                     [
                         "title" => "Trinh thám",
-                        "href" => "#",
+                        "href" => "/danh-sach/theloai/trinhtham",
                         "thumble" => "/assets/images/book-sample.jpg"
                     ],
                     [
                         "title" => "Lãng mạn",
-                        "href" => "#",
+                        "href" => "/danh-sach/theloai/langman",
                         "thumble" => "/assets/images/book-sample.jpg"
                     ],
                     [
                         "title" => "Tiểu thuyết ngắn",
-                        "href" => "#",
+                        "href" => "/danh-sach/theloai/tieuthuyetngan",
                         "thumble" => "/assets/images/book-sample.jpg"
                     ]
                 ]

@@ -145,3 +145,34 @@ img {
 }
 
 /* end book */
+
+/* navigation bar */
+.navigation-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-bottom: 3rem;
+}
+.navigation-wrapper > * {
+  margin-right: 0.8rem;
+}
+.navigation-wrapper a {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+.navigation-wrapper a > span:hover {
+  text-decoration: underline;
+}
+
+.navigation-wrapper a > i {
+  margin-right: 0.8rem;
+}
+.navigation-wrapper i {
+  font-size: 1.5rem;
+}
+.navigation-wrapper > span > i {
+  font-size: 1rem;
+}
+/* end navigation bar */

@@ -22,6 +22,10 @@ class Book extends \Core\Controller
   {
     View::renderTemplate('Book/index.html', [
       'status' => 'OK',
+      'location' => [
+        ["label" => "sách", "url" => "/danh-sach/sach"],
+        ["label" => "hành tinh song song", "url" => ""]
+      ],
       'data' => [
         'detailBook' => [
           "title" => "Hành tinh song song",
@@ -47,23 +51,23 @@ class Book extends \Core\Controller
         'books' => [
           [
             "title" => "Hành tinh song song",
-            "href" => "/book/index/15",
+            "href" => "/sach/15",
             "thumble" => "/assets/images/book-sample.jpg",
           ], [
             "title" => "Hành tinh cho kẻ nghĩ nhiều",
-            "href" => "/book/index/15",
+            "href" => "/sach/15",
             "thumble" => "/assets/images/book-sample.jpg",
           ], [
             "title" => "Hiệu ứng chim mồi",
-            "href" => "/book/index/15",
+            "href" => "/sach/15",
             "thumble" => "/assets/images/book-sample.jpg",
           ], [
             "title" => "Bạn chẳng thông minh lắm đâu",
-            "href" => "/book/index/15",
+            "href" => "/sach/15",
             "thumble" => "/assets/images/book-sample.jpg",
           ], [
             "title" => "Thiên nga đen",
-            "href" => "/book/index/15",
+            "href" => "/sach/15",
             "thumble" => "/assets/images/book-sample.jpg",
           ],
         ],
@@ -80,7 +84,7 @@ class Book extends \Core\Controller
   {
     $id = $this->route_params['id'];
     echo json_encode([
-      'id' => $id,
+      'id' => "jcasoi",
     ]);
   }
 }

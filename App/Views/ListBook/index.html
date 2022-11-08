@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block body %}
+
+<div class="container">
+  <div class="navigation-wrapper">
+    <a href="/">
+      <i class="fa-solid fa-house"></i>
+      <span class="sub-heading-4">Trang chủ</span>
+    </a>
+    {% for locate in location %}
+    <span><i class="fas fa-greater-than"></i></span>
+    <a href="{{locate.url}}">
+      <span class="sub-heading-4">{{locate.label}}</span>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="row justify-content-between">
+    <div class="col-3 filter-col">
+      <div class="heading-2">Tuyển chọn sách</div>
+      <div class="heading-4">Giá</div>
+      <div class="price-wrapper sub-heading-4">
+        <input type="number" placeholder="Từ" />
+        <input type="number" placeholder="Đến" />
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="row list-wrapper">
+        {% for book in data.books %}
+        <div class="book">
+          <a href="{{book.href}}" class="book-wrapper">
+            <div class="image">
+              <img src="{{book.thumble}}" alt="" />
+            </div>
+            <div class="heading-3 title">{{book.title}}</div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block css %}
+<link rel="stylesheet" href="/assets/css/listbook.css" />
+{% endblock %} {% block js %} {% endblock %}
