@@ -37,6 +37,18 @@ class User extends \Core\Model
     }
 
     /**
+     * Get users by username and password as an associative array
+     *
+     * @return array
+     */
+    public static function getByUsernameAndPassword($username, $password)
+    {
+        $db = static::getDB();
+        $stmt = $db->query('SELECT * FROM users WHERE username = "' . $username . '" AND password = "'.$password.'"');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
      * Update user by id
      *
      * @return bool

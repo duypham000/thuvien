@@ -26,6 +26,24 @@ class Authen extends \Core\Controller
   }
 
   /**
+   * Login
+   *
+   * @return void
+   */
+  public function loginCheckingAction()
+  {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $user = User::getByUsernameAndPassword($username, $password);
+      echo json_encode([
+        'status' => 200,
+        'data' => $user,
+      ]);
+    }
+  }
+
+  /**
    * Test post rest-api
    *
    * @return json
