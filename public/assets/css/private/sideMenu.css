@@ -1,0 +1,43 @@
+.sideMenu-wrapper {
+  width: 29.6rem;
+  padding-left: 4.5rem;
+  padding-top: 3rem;
+  padding-right: 1.6rem;
+  padding-bottom: 4.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.8rem;
+  margin-right: 1.6rem;
+}
+
+a {
+  color: #fafafafa;
+  text-decoration: none;
+}
+a:hover {
+  color: #fafafafa;
+}
+
+.sideMenu-wrapper > .title{
+  margin-bottom: 1.6rem;
+}
+
+.sideMenu-wrapper > .side-item {
+  border-radius: 8px;
+  padding: 1rem 2.4rem 1rem 1.6rem;
+  display: flex;
+  margin-bottom: 0.8rem;
+}
+
+.sideMenu-wrapper > .side-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sideMenu-wrapper > .side-item > .icon {
+  margin-right: 0.8rem;
+}
+.sideMenu-wrapper > .side-item > .icon {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

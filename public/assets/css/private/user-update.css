@@ -1,0 +1,73 @@
+.body {
+  width: 100%;
+}
+.user-wrapper {
+  width: 100%;
+}
+
+.user-wrapper > .title {
+  text-align: center;
+}
+
+.user-wrapper > .input-form {
+  width: 40rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+
+.user-wrapper > .input-form > .form-group {
+  margin-bottom: 1.6rem;
+}
+.user-wrapper > .input-form > .form-group > label {
+  margin-bottom: 0.8rem;
+}
+
+.user-wrapper > .input-form > .form-group > input {
+  padding: 1rem 1.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  color: #f4f4f5;
+  display: block;
+}
+
+.user-wrapper > .input-form > .form-group > input::placeholder {
+  color: #a7adb2;
+}
+
+.user-wrapper > .input-form > .form-group > input:focus {
+  box-shadow: none;
+}
+
+.user-wrapper > .input-form > button {
+  width: 100%;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.user-wrapper > .input-form > a {
+  width: 100%;
+  display: block;
+}
+
+.user-wrapper > .input-form > .form-group > select {
+  padding: 1rem 1.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  color: #f4f4f5;
+  display: block;
+}
+.user-wrapper > .input-form > .form-group > select option {
+  margin: 1rem 1.6rem;
+  background-color: #34495e;
+  border: none;
+  color: #fafafafa;
+}
+.user-wrapper > .input-form > .form-group > select:focus {
+  box-shadow: none;
+}
+.user-wrapper > .input-form > .form-group > select::placeholder {
+  color: #0a0a0a;
+}

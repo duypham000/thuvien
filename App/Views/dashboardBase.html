@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}{% endblock %}</title>
+    {% include "./PrivateLayout/cssImport.html" %} {% block css %}{% endblock %}
+  </head>
+  <body>
+    <div class="base-wrapper">
+      {% include "./PrivateLayout/header.html" %}
+      <div class="content-wrapper">
+        {% include "./PrivateLayout/sideMenu.html" %}
+        <div class="body">{% block body %} {% endblock %}</div>
+      </div>
+    </div>
+    {% include "./PrivateLayout/sidebar.html" %} {% include
+    "./PrivateLayout/jsImport.html" %} {% block js %}{% endblock %}
+  </body>
+</html>

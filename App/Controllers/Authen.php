@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\User;
+use \Core\View;
+
+/**
+ * Authen controller
+ *
+ * PHP version 7.0
+ */
+class Authen extends \Core\Controller
+{
+
+  /**
+   * Show the index page
+   *
+   * @return void
+   */
+  public function loginAction()
+  {
+    View::renderTemplate('Authen/login.html', [
+      'status' => 'OK',
+    ]);
+  }
+
+  /**
+   * Test post rest-api
+   *
+   * @return json
+   */
+  public function testAction()
+  {
+    $id = $this->route_params['id'];
+    echo json_encode([
+      'id' => $id,
+    ]);
+  }
+}

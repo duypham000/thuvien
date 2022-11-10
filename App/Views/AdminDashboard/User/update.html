@@ -1,0 +1,73 @@
+{% extends "dashboardBase.html" %} {% block title %}Home{% endblock %} {% block
+body %}
+
+<div>
+  <div class="navigation-wrapper">
+    <a href="/admin">
+      <i class="fa-solid fa-house"></i>
+      <span class="sub-heading-4">Trang chủ</span>
+    </a>
+    {% for locate in location %}
+    <span><i class="fas fa-greater-than"></i></span>
+    <a href="{{locate.url}}">
+      <span class="sub-heading-4">{{locate.label}}</span>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="body-2 user-wrapper">
+    <div class="heading-1 title">Cập nhật thông tin {{data.username}}</div>
+    <form class="input-form">
+      <div class="form-group">
+        <label for="username-inpt" class="sub-heading-4">Tên người dùng</label>
+        <input
+          type="text"
+          class="form-control sub-heading-4"
+          id="username-inpt"
+          placeholder="Tên người dùng"
+          required=""
+        />
+        <small id="username-inpt" class="form-text text-muted"
+          >Tên người dùng cần viết liền không dấu</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password-inpt" class="sub-heading-4">Mật khẩu</label>
+        <input
+          type="text"
+          class="form-control sub-heading-4"
+          id="password-inpt"
+          placeholder="Mật khẩu"
+          required=""
+        />
+        <small id="password-inpt" class="form-text text-muted"
+          >Mật khẩu nên đặt thật khó đoán</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="role-slc" class="sub-heading-4">Vai trò</label>
+        <select class="form-control sub-heading-4" id="role-slc">
+          <option>Quản trị viên</option>
+          <option>Người dùng</option>
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-outline-info btn-lg btn-block sub-heading-2"
+      >
+        Lưu thông tin
+      </button>
+      <a
+        href="/admin/users"
+        class="btn btn-outline-danger btn-lg btn-block sub-heading-2"
+      >
+        Hủy
+      </a>
+    </form>
+  </div>
+</div>
+{% endblock %} {% block css %}
+<link rel="stylesheet" href="/assets/css/private/user-update.css" />
+{% endblock %} {% block js %} {% endblock %}

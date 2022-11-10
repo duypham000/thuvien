@@ -30,6 +30,10 @@ $router->add('', ['controller' => 'Home', 'action' => 'index']);
 // config variable route
 $router->add('sach/{id:\d+}', ['controller' => 'Book', 'action' => 'index']);
 $router->add('danh-sach/{type:\w+}/{id:\w+}', ['controller' => 'ListBook', 'action' => 'index']);
+$router->add('login', ['controller' => 'Authen', 'action' => 'login']);
+$router->add('admin', ['namespace' => 'Admin', 'controller' => 'DashBoard', 'action' => 'index']);
+$router->add('admin/users', ['namespace' => 'Admin', 'controller' => 'UserMngr', 'action' => 'index']);
+$router->add('admin/users/sua-thong-tin', ['namespace' => 'Admin', 'controller' => 'UserMngr', 'action' => 'update']);
 $router->add('{controller}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 

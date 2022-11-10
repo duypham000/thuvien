@@ -1,0 +1,45 @@
+{% extends "dashboardBase.html" %} {% block title %}Home{% endblock %} {% block
+body %}
+
+<div>
+  <div class="navigation-wrapper">
+    <a href="/admin">
+      <i class="fa-solid fa-house"></i>
+      <span class="sub-heading-4">Trang chủ</span>
+    </a>
+    {% for locate in location %}
+    <span><i class="fas fa-greater-than"></i></span>
+    <a href="{{locate.url}}">
+      <span class="sub-heading-4">{{locate.label}}</span>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="user-wrapper">
+    <div class="heading-1 title">Danh sách user</div>
+    <a href="#" class="sub-heading-2 add-user">Thêm mới</a>
+    <table class="table table-hover table-dark body-2">
+      <thead>
+        <tr class="heading-3">
+          <th scope="col">Tên người dùng</th>
+          <th scope="col">Mật khẩu</th>
+          <th scope="col">Vai trò</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Duyn</th>
+          <td>Hello</td>
+          <td>Admin</td>
+          <td>
+            <a href="/admin/users/sua-thong-tin" class="btn btn-success sub-heading-3">Sửa</a>
+            <button class="btn btn-danger sub-heading-3">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %} {% block css %}
+<link rel="stylesheet" href="/assets/css/private/user.css" />
+{% endblock %} {% block js %} {% endblock %}
