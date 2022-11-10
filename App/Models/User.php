@@ -20,7 +20,7 @@ class User extends \Core\Model
     public static function getAll()
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT id, name FROM users');
+        $stmt = $db->query('SELECT *, name FROM users');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -29,11 +29,11 @@ class User extends \Core\Model
      *
      * @return bool
      */
-    public static function insert($name)
+    public static function insert($name, $password, $role)
     {
         try {
             $db = static::getDB();
-            $db->query('INSERT INTO `users` (`id`, `name`) VALUES (NULL, "' . $name . '")');
+            $db->query('INSERT INTO `users` (`id`, `name`, `password`, `role` ) VALUES (NULL, "' . $name . '","' . $password . '","' . $role . '",)');
             return true;
         } catch (\Throwable $th) {
             return false;
