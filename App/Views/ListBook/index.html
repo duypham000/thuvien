@@ -14,15 +14,8 @@
     {% endfor %}
   </div>
   <div class="row justify-content-between">
-    <div class="col-3 filter-col">
-      <div class="heading-2">Tuyển chọn sách</div>
-      <div class="heading-4">Giá</div>
-      <div class="price-wrapper sub-heading-4">
-        <input type="number" placeholder="Từ" />
-        <input type="number" placeholder="Đến" />
-      </div>
-    </div>
-    <div class="col-9">
+    <div class="heading-2">{{title}}</div>
+    <div class="col-12">
       <div class="row list-wrapper">
         {% for book in data.books %}
         <div class="book">
@@ -30,7 +23,14 @@
             <div class="image">
               <img src="{{book.thumble}}" alt="" />
             </div>
-            <div class="heading-3 title">{{book.title}}</div>
+            <div class="book-dt">
+              <div class="heading-3 title">{{book.title}}</div>
+              <div class="sub-heading-3 detail">
+                <span>{{book.price}}</span>
+                <i class="fas fa-circle"></i>
+                <span>{{book.author}}</span>
+              </div>
+            </div>
           </a>
         </div>
         {% endfor %}

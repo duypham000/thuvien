@@ -6,6 +6,9 @@
   align-items: flex-start;
   flex-direction: column;
 }
+.filter-col > .btn {
+  width: calc(100% - 2rem);
+}
 .filter-col > .price-wrapper {
   display: flex;
   align-items: center;

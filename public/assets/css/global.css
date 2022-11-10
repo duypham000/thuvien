@@ -119,7 +119,7 @@ img {
   transform: scale(1.2);
 }
 
-.book-wrapper > .title {
+.book-wrapper > .book-dt {
   position: absolute;
   color: #ecf0f1;
   bottom: 0;
@@ -140,7 +140,20 @@ img {
   );
 }
 
-.book-wrapper > .title:hover {
+.book-wrapper > .book-dt > .title:hover {
+  color: #3498db;
+}
+
+.book-wrapper > .book-dt > .detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.book-wrapper > .book-dt > .detail i {
+  font-size: 0.6rem;
+  margin: 0 0.8rem;
   color: #3498db;
 }
 
