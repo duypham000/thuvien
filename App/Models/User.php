@@ -20,8 +20,52 @@ class User extends \Core\Model
     public static function getAll()
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT *, name FROM users');
+        $stmt = $db->query('SELECT * FROM users');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Get users by id as an associative array
+     *
+     * @return array
+     */
+    public static function getById($id)
+    {
+        $db = static::getDB();
+        $stmt = $db->query('SELECT * FROM users WHERE id = ' . $id . '');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Update user by id
+     *
+     * @return bool
+     */
+    public static function update($id, $name, $password, $role)
+    {
+        try {
+            $db = static::getDB();
+            $db->query('UPDATE users SET username = "' . $name . '", password = "' . $password . '", role = "' . $role . '" WHERE id = ' . $id . ' ');
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
+    /**
+     * Delete user by id
+     *
+     * @return bool
+     */
+    public static function deleteById($id)
+    {
+        try {
+            $db = static::getDB();
+            $db->query('DELETE FROM users WHERE id = ' . $id . ' ');
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 
     /**
@@ -33,7 +77,7 @@ class User extends \Core\Model
     {
         try {
             $db = static::getDB();
-            $db->query('INSERT INTO `users` (`id`, `name`, `password`, `role` ) VALUES (NULL, "' . $name . '","' . $password . '","' . $role . '",)');
+            $db->query('INSERT INTO users (id, username, password, role) VALUES (NULL, "' . $name . '","' . $password . '","' . $role . '")');
             return true;
         } catch (\Throwable $th) {
             return false;

@@ -16,7 +16,12 @@ body %}
   </div>
   <div class="user-wrapper">
     <div class="heading-1 title">Danh sách user</div>
-    <a href="#" class="sub-heading-2 add-user">Thêm mới</a>
+    {% if notify.type != NULL %}
+    <div class="alert alert-{{notify.type}} body-2" role="alert">
+      {{notify.detail}}
+    </div>
+    {% endif %}
+    <a href="/admin/users/them-moi" class="sub-heading-2 add-user">Thêm mới</a>
     <table class="table table-hover table-dark body-2">
       <thead>
         <tr class="heading-3">
@@ -27,15 +32,36 @@ body %}
         </tr>
       </thead>
       <tbody>
+        {% for user in users %}
         <tr>
-          <th>Duyn</th>
-          <td>Hello</td>
-          <td>Admin</td>
+          <th>{{user.username}}</th>
+          <td>{{user.password}}</td>
+          <td>{{user.role}}</td>
           <td>
-            <a href="/admin/users/sua-thong-tin" class="btn btn-success sub-heading-3">Sửa</a>
-            <button class="btn btn-danger sub-heading-3">Xóa</button>
+            <a
+              href="/admin/users/sua-thong-tin"
+              class="btn btn-success sub-heading-3"
+              >Sửa</a
+            >
+            <form action="/admin/users" method="post" style="display: inline">
+              <input
+                type="text"
+                value="{{user.id}}"
+                name="id"
+                style="display: none"
+              />
+              <button
+                class="btn btn-danger sub-heading-3"
+                type="submit"
+                name="action"
+                value="delete"
+              >
+                Xóa
+              </button>
+            </form>
           </td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

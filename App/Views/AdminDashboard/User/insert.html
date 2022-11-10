@@ -15,7 +15,7 @@ body %}
     {% endfor %}
   </div>
   <div class="body-2 user-wrapper">
-    <div class="heading-1 title">Cập nhật thông tin {{data.username}}</div>
+    <div class="heading-1 title">Thêm người dùng</div>
     <form class="input-form" action="/admin/users" method="post">
       <div class="form-group">
         <label for="username-inpt" class="sub-heading-4">Tên người dùng</label>
@@ -26,7 +26,6 @@ body %}
           placeholder="Tên người dùng"
           required=""
           name="username"
-          value="{{data.username}}"
         />
         <small id="username-inpt" class="form-text text-muted"
           >Tên người dùng cần viết liền không dấu</small
@@ -42,7 +41,6 @@ body %}
           placeholder="Mật khẩu"
           required=""
           name="password"
-          value="{{data.password}}"
         />
         <small id="password-inpt" class="form-text text-muted"
           >Mật khẩu nên đặt thật khó đoán</small
@@ -52,19 +50,16 @@ body %}
       <div class="form-group">
         <label for="role-slc" class="sub-heading-4">Vai trò</label>
         <select class="form-control sub-heading-4" name="role" id="role-slc">
-          <option value="admin" {% if data.role == "admin" %} selected {% endif %}>Quản trị viên</option>
-          <option value="user" {% if data.role == "user" %} selected {% endif %}>
-            Người dùng
-          </option>
+          <option value="admin">Quản trị viên</option>
+          <option value="user">Người dùng</option>
         </select>
       </div>
 
-      <input type="text" value="{{data.id}}" name="id" style="display: none">
       <button
         type="submit"
         class="btn btn-outline-info btn-lg btn-block sub-heading-2"
         name="action"
-        value="update"
+        value="add"
       >
         Lưu thông tin
       </button>
