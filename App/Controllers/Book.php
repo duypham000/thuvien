@@ -92,9 +92,10 @@ class Book extends \Core\Controller
    */
   public function testAction()
   {
-    $id = $this->route_params['id'];
-    echo json_encode([
-      'id' => "jcasoi",
-    ]);
+    // $id = $this->route_params['id'];
+    // echo json_encode([
+    //   'id' => "jcasoi",
+    // ]);
+      echo json_encode($_GET);
   }
 }

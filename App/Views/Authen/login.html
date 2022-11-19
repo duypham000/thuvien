@@ -248,8 +248,10 @@
         let user = getCookie("username");
         let role = getCookie("role");
         console.log(user);
-        if (!(user === "" && role === "")) {
+        if (!(user === "") && role === "admin") {
           window.location.href = "/admin";
+        }else if(!(user==="")){
+          window.location.href = "/";
         }
       }
       function handleSubmit() {

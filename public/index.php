@@ -35,8 +35,12 @@ $router->add('login', ['controller' => 'Authen', 'action' => 'login']);
 
 $router->add('admin', ['namespace' => 'Admin', 'controller' => 'DashBoard', 'action' => 'index']);
 $router->add('admin/users', ['namespace' => 'Admin', 'controller' => 'UserMngr', 'action' => 'index']);
+
 $router->add('admin/users/sua-thong-tin', ['namespace' => 'Admin', 'controller' => 'UserMngr', 'action' => 'update']);
 $router->add('admin/users/them-moi', ['namespace' => 'Admin', 'controller' => 'UserMngr', 'action' => 'insert']);
+
+$router->add('admin/books/them-moi', ['namespace' => 'Admin', 'controller' => 'BooksMngr', 'action' => 'insert']);
+
 $router->add('{controller}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 
