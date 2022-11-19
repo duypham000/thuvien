@@ -14,56 +14,66 @@ body %}
     </a>
     {% endfor %}
   </div>
-  <div class="body-2 user-wrapper">
+  <div class="body-2 book-container-wrapper">
     <div class="heading-1 title">Thêm sách</div>
     <form class="input-form" action="/admin/users" method="post">
       <div class="form-group">
-        <label for="username-inpt" class="sub-heading-4">Tựa đề</label>
+        <label for="title-inpt" class="sub-heading-4">Tựa đề</label>
         <input
           type="text"
           class="form-control sub-heading-4"
-          id="username-inpt"
-          placeholder="Tên người dùng"
-          required=""
-          name="username"
+          id="title-inpt"
+          placeholder="Tựa đề sách"
+          required
+          name="title"
         />
       </div>
 
       <div class="form-group">
-        <label for="password-inpt" class="sub-heading-4">Ảnh bìa</label>
+        <label for="price-inpt" class="sub-heading-4">Giá niêm yết</label>
+        <input
+          type="number"
+          class="form-control sub-heading-4"
+          id="price-inpt"
+          placeholder="Giá niêm yết"
+          required
+          name="price"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="img-inpt" class="sub-heading-4">Ảnh bìa</label>
         <input
           type="file"
           class="form-control sub-heading-4"
           id="password-inpt"
-          placeholder="Mật khẩu"
-          required=""
-          name="password"
+          required
+          name="img"
         />
-        <small id="password-inpt" class="form-text text-muted"
+        <small id="img-inpt" class="form-text text-muted"
           >Ảnh nên sắc nét một chút</small
         >
       </div>
 
       <div class="form-group">
-        <label for="username-inpt" class="sub-heading-4">Nội dung sách</label>
+        <label for="desc-inpt" class="sub-heading-4">Nội dung sách</label>
         <textarea
           class="form-control sub-heading-4"
-          id="username-inpt"
-          placeholder="Tên người dùng"
+          id="desc-inpt"
+          placeholder="Nội dung vắn tắt hoặc đôi dòng giới thiệu"
           required=""
-          name="username"
+          name="description"
         ></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="role-slc" class="sub-heading-4">Vai trò</label>
-        <select class="form-control sub-heading-4" name="role" id="role-slc">
-          <option value="admin">Quản trị viên</option>
-          <option value="user">Người dùng</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <select class="js-select2" multiple="multiple">
+      <div class="form-group category-wrapper">
+        <label for="cate-slc" class="sub-heading-4">Thể loại</label>
+        <select
+          class="form-control sub-heading-4"
+          name="cate"
+          id="cate-slc"
+          multiple
+        >
           <option value="O1" data-badge="">Option1</option>
           <option value="O2" data-badge="">Option2</option>
           <option value="O3" data-badge="">Option3</option>
@@ -77,6 +87,18 @@ body %}
           <option value="O11" data-badge="">Option11</option>
           <option value="O12" data-badge="">Option12</option>
           <option value="O13" data-badge="">Option13</option>
+        </select>
+      </div>
+
+      <div class="form-group author-wrapper">
+        <label for="author-slc" class="sub-heading-4">Tác giả</label>
+        <select
+          class="form-control sub-heading-4"
+          name="author"
+          id="author-slc"
+        >
+          <option value="admin">Phạm Khánh Duy</option>
+          <option value="user">Vũ Trọng Phụng</option>
         </select>
       </div>
 
@@ -100,5 +122,19 @@ body %}
 {% endblock %} {% block css %}
 <link rel="stylesheet" href="/assets/css/private/book-insert.css" />
 {% endblock %} {% block js %}
+<script>
+  var $author = $("#author-slc");
+  $author.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "author-select-wrapper",
+  });
+
+  var $cate = $("#cate-slc");
+  $cate.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "select-wrapper",
+    placeholder: "Có thể chọn nhiều thể loại cùng lúc",
+  });
+</script>
 <script src="/assets/js/private/books.js"></script>
 {% endblock %}

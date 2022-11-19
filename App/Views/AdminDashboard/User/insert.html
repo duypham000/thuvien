@@ -74,4 +74,13 @@ body %}
 </div>
 {% endblock %} {% block css %}
 <link rel="stylesheet" href="/assets/css/private/user-update.css" />
-{% endblock %} {% block js %} {% endblock %}
+{% endblock %} {% block js %}
+<script>
+  var $disabledResults = $("#role-slc");
+  $disabledResults.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "select-wrapper",
+    dropdownCssClass: "dropdown-wrapper",
+  });
+</script>
+{% endblock %}

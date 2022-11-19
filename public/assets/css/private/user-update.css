@@ -71,3 +71,46 @@
 .user-wrapper > .input-form > .form-group > select::placeholder {
   color: #0a0a0a;
 }
+.select-wrapper {
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  display: block;
+  height: fit-content;
+}
+.select-wrapper > span:first-child {
+  background-color: transparent;
+  padding: 0;
+  color: #f4f4f5 !important;
+  padding: 1rem 1.6rem;
+}
+.select-wrapper > span:last-child {
+  transform: translate(-25%, 40%) scale(1.5);
+}
+
+.select2-container .select2-selection--single {
+  height: fit-content;
+  border-radius: 8px;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.select2-container--default
+  .select2-results__option--highlighted.select2-results__option--selectable {
+  background-color: #22313f;
+}
+.select2-results__option--selectable {
+  background-color: #18222c;
+}
+.select2-container--default .select2-results__option--selected {
+  background-color: #18222c;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
