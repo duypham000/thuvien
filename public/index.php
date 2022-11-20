@@ -29,7 +29,7 @@ $router = new Core\Router();
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 // config variable route
 $router->add('sach/{id:\d+}', ['controller' => 'Book', 'action' => 'index']);
-$router->add('danh-sach/{type:\w+}/{id:\w+}', ['controller' => 'ListBook', 'action' => 'index']);
+$router->add('danh-sach/the-loai/{id:\w+}', ['controller' => 'ListBook', 'action' => 'category']);
 
 $router->add('login', ['controller' => 'Authen', 'action' => 'login']);
 

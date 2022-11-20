@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\Author;
+use App\Models\Books;
+use App\Models\Category;
 use App\Models\User;
 use \Core\View;
 
@@ -61,6 +64,37 @@ class ListBook extends \Core\Controller
             "thumble" => "/assets/images/book-sample.jpg",
           ],
         ],
+      ]
+    ]);
+  }
+
+  public function categoryAction()
+  {
+    $id = $this->route_params['id'];
+    $books = Books::getAll();
+    $listBook = [];
+    foreach ($books as $book) {
+      $idCateArray =  explode(",", $book["categories"]);
+      if (in_array($id, $idCateArray)) {
+        array_push($listBook, [
+          "title" => $book["title"],
+          "href" => "/sach/" . $book["id"],
+          "author" => Author::getById($book["authorId"])["name"],
+          "price" => number_format($book["price"], 0, ",", ".") . "đ",
+          "thumble" => "/assets/images/" . $book["image"],
+        ]);
+      }
+    }
+    $cateName = Category::getById($id)["name"];
+    View::renderTemplate('ListBook/index.html', [
+      'status' => 'OK',
+      'location' => [
+        ["label" => "thể loại", "url" => ""],
+        ["label" => $cateName, "url" => ""]
+      ],
+      'title' => "Sách thuộc thể loại " . $cateName,
+      'data' => [
+        'books' => $listBook,
       ]
     ]);
   }

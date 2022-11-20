@@ -30,7 +30,7 @@ class Home extends \Core\Controller
                 "title" => $book["title"],
                 "href" => "/sach/" . $book["id"],
                 "author" => Author::getById($book["authorId"])["name"],
-                "price" => $book["price"],
+                "price" => number_format($book["price"], 0, ",", ".") . "đ",
                 "thumble" => "/assets/images/" . $book["image"],
             ]);
         }
@@ -39,7 +39,7 @@ class Home extends \Core\Controller
         foreach ($categories as &$cate) {
             array_push($listCate, [
                 "title" => $cate["name"],
-                "href" => "/danh-sach/theloai/" . $cate["id"],
+                "href" => "/danh-sach/the-loai/" . $cate["id"],
                 "thumble" => "/assets/images/book-sample.jpg"
             ]);
         }
