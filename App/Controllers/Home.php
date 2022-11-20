@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\Author;
+use App\Models\Books;
+use App\Models\Category;
 use App\Models\User;
 use \Core\View;
 
@@ -20,64 +23,31 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
+        $listBook = [];
+        $books = Books::getAll();
+        foreach ($books as &$book) {
+            array_push($listBook, [
+                "title" => $book["title"],
+                "href" => "/sach/" . $book["id"],
+                "author" => Author::getById($book["authorId"])["name"],
+                "price" => $book["price"],
+                "thumble" => "/assets/images/" . $book["image"],
+            ]);
+        }
+        $categories = Category::getAll();
+        $listCate = [];
+        foreach ($categories as &$cate) {
+            array_push($listCate, [
+                "title" => $cate["name"],
+                "href" => "/danh-sach/theloai/" . $cate["id"],
+                "thumble" => "/assets/images/book-sample.jpg"
+            ]);
+        }
         View::renderTemplate('Home/index.html', [
             'status' => 'OK',
             'data' => [
-                'newBook' => [
-                    [
-                        "title" => "Hành tinh song song",
-                        "href" => "/sach/15",
-                        "author" => "Duyn",
-                        "price" => "125,000 đ",
-                        "thumble" => "/assets/images/book-sample.jpg",
-                    ], [
-                        "title" => "Hành tinh cho kẻ nghĩ nhiều",
-                        "href" => "/sach/15",
-                        "author" => "Duyn",
-                        "price" => "125,000 đ",
-                        "thumble" => "/assets/images/book-sample.jpg",
-                    ], [
-                        "title" => "Hiệu ứng chim mồi",
-                        "href" => "/sach/15",
-                        "author" => "Duyn",
-                        "price" => "125,000 đ",
-                        "thumble" => "/assets/images/book-sample.jpg",
-                    ], [
-                        "title" => "Bạn chẳng thông minh lắm đâu",
-                        "href" => "/sach/15",
-                        "author" => "Duyn",
-                        "price" => "125,000 đ",
-                        "thumble" => "/assets/images/book-sample.jpg",
-                    ], [
-                        "title" => "Thiên nga đen",
-                        "href" => "/sach/15",
-                        "author" => "Duyn",
-                        "price" => "125,000 đ",
-                        "thumble" => "/assets/images/book-sample.jpg",
-                    ],
-                ],
-                'categories' => [
-                    [
-                        "title" => "Kinh dị",
-                        "href" => "/danh-sach/theloai/kinhdi",
-                        "thumble" => "/assets/images/book-sample.jpg"
-                    ],
-                    [
-                        "title" => "Trinh thám",
-                        "href" => "/danh-sach/theloai/trinhtham",
-                        "thumble" => "/assets/images/book-sample.jpg"
-                    ],
-                    [
-                        "title" => "Lãng mạn",
-                        "href" => "/danh-sach/theloai/langman",
-                        "thumble" => "/assets/images/book-sample.jpg"
-                    ],
-                    [
-                        "title" => "Tiểu thuyết ngắn",
-                        "href" => "/danh-sach/theloai/tieuthuyetngan",
-                        "thumble" => "/assets/images/book-sample.jpg"
-                    ]
-                ]
+                'newBook' => $listBook,
+                'categories' => $listCate,
             ]
         ]);
     }

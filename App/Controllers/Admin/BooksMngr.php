@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Models\Author;
 use App\Models\Books;
+use App\Models\Category;
 use \Core\View;
 
 /**
@@ -83,19 +84,19 @@ class BooksMngr extends \Core\Controller
     }
     $books = Books::getAll();
 
-    // foreach ($books as &$value) {
-    //   $listCateName = "";
-    //   $listIdCategories =  explode(",", $value["categories"]);
-    //   foreach ($listIdCategories as $key => $value) {
-    //     if ($key !== 0) {
-    //       $listCateName .= ",";
-    //     }
-    //     $listCateName .= Category::getById($value)["name"];
-    //   }
-
-    //   $value["author"] = Author::getById($value["author"]);
-    //   $value["categories"] = $listCateName;
-    // }
+    foreach ($books as &$value) {
+      $listCateName = "";
+      $listIdCategories =  explode(",", $value["categories"]);
+      foreach ($listIdCategories as $keyCate => $valueCate) {
+        if ($keyCate !== 0) {
+          $listCateName .= ",";
+        }
+        $cateName = Category::getById($valueCate)[0]["name"];
+        $listCateName .= $cateName;
+      }
+      $value["authorId"] = Author::getById($value["authorId"])["name"];
+      $value["categories"] = $listCateName;
+    }
 
     View::renderTemplate('AdminDashboard/Books/index.html', [
       'status' => 'OK',
@@ -121,6 +122,8 @@ class BooksMngr extends \Core\Controller
    */
   public function insertAction()
   {
+    $categories = Category::getAll();
+    $authors = Author::getAll();
     View::renderTemplate('AdminDashboard/Books/insert.html', [
       'status' => 'OK',
       'location' => [
@@ -134,17 +137,8 @@ class BooksMngr extends \Core\Controller
         ]
       ],
       'data' => [
-        'categories' => [
-          ['id' => 0, 'name' => "tiểu thuyết"],
-          ["id" => 1, "name" => "âm nhạc"],
-          ["id" => 2, "name" => "tình cảm"],
-          ["id" => 3, "name" => "giả tưởng"]
-        ],
-        'author' => [
-          ["id" => 0, "name" => "Phạm Khánh Duy"],
-          ["id" => 1, "name" => "Đào Cẩm Tú"],
-          ["id" => 2, "name" => "Dai Duong Duong"]
-        ],
+        'categories' => $categories,
+        'author' => $authors,
       ]
     ]);
   }
@@ -157,6 +151,8 @@ class BooksMngr extends \Core\Controller
   public function updateAction()
   {
     $id = $this->route_params['id'];
+    $categories = Category::getAll();
+    $authors = Author::getAll();
     $book = Books::getById($id)[0];
     View::renderTemplate('AdminDashboard/Books/update.html', [
       'status' => 'OK',
@@ -172,18 +168,9 @@ class BooksMngr extends \Core\Controller
       ],
       'book' => $book,
       'data' => [
-        'categories' => [
-          ['id' => 0, 'name' => "tiểu thuyết"],
-          ["id" => 1, "name" => "âm nhạc"],
-          ["id" => 2, "name" => "tình cảm"],
-          ["id" => 3, "name" => "giả tưởng"]
-        ],
-        'author' => [
-          ["id" => 0, "name" => "Phạm Khánh Duy"],
-          ["id" => 1, "name" => "Đào Cẩm Tú"],
-          ["id" => 2, "name" => "Dai Duong Duong"]
-        ],
-      ]
+        'categories' => $categories,
+        'author' => $authors,
+      ],
     ]);
   }
 

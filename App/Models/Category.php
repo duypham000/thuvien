@@ -33,7 +33,7 @@ class Category extends \Core\Model
     {
         $db = static::getDB();
         $stmt = $db->query('SELECT * FROM categories WHERE id = ' . $id . '');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
