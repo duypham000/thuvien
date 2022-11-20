@@ -99,6 +99,36 @@ class ListBook extends \Core\Controller
     ]);
   }
 
+  public function authorAction()
+  {
+    $id = $this->route_params['id'];
+    $books = Books::getAll();
+    $authorName = Author::getById($id)["name"];
+    $listBook = [];
+    foreach ($books as $book) {
+      if ($book["authorId"] === $id) {
+        array_push($listBook, [
+          "title" => $book["title"],
+          "href" => "/sach/" . $book["id"],
+          "author" => $authorName,
+          "price" => number_format($book["price"], 0, ",", ".") . "đ",
+          "thumble" => "/assets/images/" . $book["image"],
+        ]);
+      }
+    }
+    View::renderTemplate('ListBook/index.html', [
+      'status' => 'OK',
+      'location' => [
+        ["label" => "tác giả", "url" => ""],
+        ["label" => $authorName, "url" => ""]
+      ],
+      'title' => "Sách do tác giả " . $authorName . " viết",
+      'data' => [
+        'books' => $listBook,
+      ]
+    ]);
+  }
+
   /**
    * Test post rest-api
    *

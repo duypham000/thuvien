@@ -30,6 +30,7 @@ $router->add('', ['controller' => 'Home', 'action' => 'index']);
 // config variable route
 $router->add('sach/{id:\d+}', ['controller' => 'Book', 'action' => 'index']);
 $router->add('danh-sach/the-loai/{id:\w+}', ['controller' => 'ListBook', 'action' => 'category']);
+$router->add('danh-sach/tac-gia/{id:\w+}', ['controller' => 'ListBook', 'action' => 'author']);
 
 $router->add('login', ['controller' => 'Authen', 'action' => 'login']);
 
