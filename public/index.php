@@ -39,6 +39,7 @@ $router->add('admin/users', ['namespace' => 'Admin', 'controller' => 'UserMngr',
 $router->add('admin/users/sua-thong-tin', ['namespace' => 'Admin', 'controller' => 'UserMngr', 'action' => 'update']);
 $router->add('admin/users/them-moi', ['namespace' => 'Admin', 'controller' => 'UserMngr', 'action' => 'insert']);
 
+$router->add('admin/books', ['namespace' => 'Admin', 'controller' => 'BooksMngr', 'action' => 'index']);
 $router->add('admin/books/them-moi', ['namespace' => 'Admin', 'controller' => 'BooksMngr', 'action' => 'insert']);
 
 $router->add('{controller}/{action}');

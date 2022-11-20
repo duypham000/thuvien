@@ -16,7 +16,12 @@ body %}
   </div>
   <div class="body-2 book-container-wrapper">
     <div class="heading-1 title">Thêm sách</div>
-    <form class="input-form" action="/admin/users" method="post">
+    <form
+      class="input-form"
+      action="/admin/books"
+      method="post"
+      enctype="multipart/form-data"
+    >
       <div class="form-group">
         <label for="title-inpt" class="sub-heading-4">Tựa đề</label>
         <input
@@ -43,12 +48,15 @@ body %}
 
       <div class="form-group">
         <label for="img-inpt" class="sub-heading-4">Ảnh bìa</label>
+        <br />
+        <label for="img-inpt"><img id="image-upload" /></label>
         <input
           type="file"
           class="form-control sub-heading-4"
-          id="password-inpt"
+          id="img-inpt"
           required
-          name="img"
+          name="image"
+          onchange="loadFile(event)"
         />
         <small id="img-inpt" class="form-text text-muted"
           >Ảnh nên sắc nét một chút</small
@@ -65,15 +73,10 @@ body %}
           name="description"
         ></textarea>
       </div>
-
+      <input type="text" style="display: none" id="cate-value" name="cate" />
       <div class="form-group category-wrapper">
         <label for="cate-slc" class="sub-heading-4">Thể loại</label>
-        <select
-          class="form-control sub-heading-4"
-          name="cate"
-          id="cate-slc"
-          multiple
-        >
+        <select class="form-control sub-heading-4" id="cate-slc" multiple>
           <option value="O1" data-badge="">Option1</option>
           <option value="O2" data-badge="">Option2</option>
           <option value="O3" data-badge="">Option3</option>
@@ -107,6 +110,7 @@ body %}
         class="btn btn-outline-info btn-lg btn-block sub-heading-2"
         name="action"
         value="add"
+        id="act"
       >
         Lưu thông tin
       </button>
@@ -133,8 +137,18 @@ body %}
   $cate.select2({
     minimumResultsForSearch: Infinity,
     selectionCssClass: "select-wrapper",
-    placeholder: "Có thể chọn nhiều thể loại cùng lúc",
+    placeholder: "Chủ đề sách",
   });
+  $cate.on("change", function () {
+    $("#cate-value").val($cate.val().join(","));
+  });
+  var loadFile = function (e) {
+    var output = document.getElementById("image-upload");
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+      URL.revokeObjectURL(output.src); // free memory
+    };
+  };
 </script>
 <script src="/assets/js/private/books.js"></script>
 {% endblock %}

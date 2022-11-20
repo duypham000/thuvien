@@ -83,7 +83,7 @@ class Books extends \Core\Model
     {
         try {
             $db = static::getDB();
-            $db->query('INSERT INTO users (id, title, description, price, image, categories, authorId) VALUES (NULL, "' .
+            $db->query('INSERT INTO books (id, title, description, price, image, categories, authorId) VALUES (NULL, "' .
                 $title . '","' . $desc . '","' . $price . '","' . $image . '","' . $categories . '","' . $authorId . '")');
             return true;
         } catch (\Throwable $th) {

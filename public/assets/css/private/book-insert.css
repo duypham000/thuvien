@@ -153,6 +153,9 @@
 textarea {
   color: #ffffff !important;
 }
-.select2-search {
-  width: 100%;
+
+#image-upload{
+  width: 42rem;
+  height: 48rem;
+  object-fit: cover;
 }
