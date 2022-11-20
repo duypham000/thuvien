@@ -44,13 +44,16 @@
       <div class="swiper-pagination"></div>
     </div>
   </div>
-  <div class="categories">
-    {% for cate in data.categories %}
-    <a class="category-wrapper" href="{{cate.href}}">
-      <img src="{{cate.thumble}}" alt="" />
-      <div class="heading-3">{{cate.title}}</div>
-    </a>
-    {% endfor %}
+  <div class="grid-wrapper list-wrapper categories">
+    <h2 class="heading-2">Thể loại</h2>
+    <div class="row">
+      {% for cate in data.categories %}
+      <a class=".col-6 category-wrapper" href="{{cate.href}}">
+        <img src="{{cate.thumble}}" alt="" />
+        <div class="heading-3">{{cate.title}}</div>
+      </a>
+      {% endfor %}
+    </div>
   </div>
   <div class="grid-wrapper list-wrapper">
     <h2 class="heading-2">Mới nhất</h2>

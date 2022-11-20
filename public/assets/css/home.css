@@ -35,14 +35,13 @@
 }
 
 .categories {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-top: 2.4rem;
   margin-bottom: 2.4rem;
 }
 .category-wrapper {
-  width: 30rem;
+  width: calc(100% / 4 - 8px);
+  padding: 0;
+  margin: 0;
   height: 15rem;
   position: relative;
   color: white;
@@ -50,6 +49,8 @@
   border-radius: 8px;
   overflow: hidden;
   user-select: none;
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
 .category-wrapper:hover {
