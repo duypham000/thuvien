@@ -47,7 +47,7 @@ class BooksMngr extends \Core\Controller
       }
       if ($_POST['action'] == "update") {
         $id = $_POST['id'];
-        $imageName = Books::getById($id)[0]["image"];
+        $imageName = Books::getById($id)["image"];
         if ($_FILES["image"]["name"] !== "") {
           $imageName = $_FILES["image"]["name"];
           $tempname = $_FILES["image"]["tmp_name"];
@@ -91,7 +91,7 @@ class BooksMngr extends \Core\Controller
         if ($keyCate !== 0) {
           $listCateName .= ",";
         }
-        $cateName = Category::getById($valueCate)[0]["name"];
+        $cateName = Category::getById($valueCate)["name"];
         $listCateName .= $cateName;
       }
       $value["authorId"] = Author::getById($value["authorId"])["name"];
@@ -153,7 +153,7 @@ class BooksMngr extends \Core\Controller
     $id = $this->route_params['id'];
     $categories = Category::getAll();
     $authors = Author::getAll();
-    $book = Books::getById($id)[0];
+    $book = Books::getById($id);
     View::renderTemplate('AdminDashboard/Books/update.html', [
       'status' => 'OK',
       'location' => [

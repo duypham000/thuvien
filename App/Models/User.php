@@ -33,7 +33,7 @@ class User extends \Core\Model
     {
         $db = static::getDB();
         $stmt = $db->query('SELECT * FROM users WHERE id = ' . $id . '');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
     }
 
     /**

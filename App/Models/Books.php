@@ -33,7 +33,7 @@ class Books extends \Core\Model
     {
         $db = static::getDB();
         $stmt = $db->query('SELECT * FROM books WHERE id = ' . $id . '');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
     }
 
     /**

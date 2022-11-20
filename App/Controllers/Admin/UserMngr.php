@@ -89,7 +89,7 @@ class UserMngr extends \Core\Controller
   public function updateAction()
   {
     $id = $this->route_params['id'];
-    $user = User::getById($id)[0];
+    $user = User::getById($id);
     View::renderTemplate('AdminDashboard/User/update.html', [
       'status' => 'OK',
       'location' => [
