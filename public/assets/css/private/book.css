@@ -1,0 +1,48 @@
+.body {
+  width: 100%;
+}
+.bookManager-wrapper {
+  width: 100%;
+}
+.bookManager-wrapper > .title {
+  margin-bottom: 1.6rem;
+}
+
+.bookManager-wrapper > .add-book-link {
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.bookManager-wrapper > .add-book-link:hover {
+  text-decoration: underline;
+  color: #3498db;
+}
+
+a {
+  width: fit-content;
+}
+
+.bookManager-wrapper .book-img {
+  width: 126px;
+  height: 144px;
+}
+.bookManager-wrapper .book-img > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+td,
+th {
+  vertical-align: top;
+}
+
+.bookManager-wrapper .book-desc {
+  max-width: 40rem;
+}
+
+.bookManager-wrapper .book-desc > span {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

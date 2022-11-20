@@ -88,7 +88,8 @@ class UserMngr extends \Core\Controller
    */
   public function updateAction()
   {
-    $user = User::getById(9)[0];
+    $id = $this->route_params['id'];
+    $user = User::getById($id)[0];
     View::renderTemplate('AdminDashboard/User/update.html', [
       'status' => 'OK',
       'location' => [
@@ -97,7 +98,7 @@ class UserMngr extends \Core\Controller
           'label' => "Quản lý user"
         ],
         [
-          'url' => "/admin/users",
+          'url' => "#",
           'label' => "Cập nhật thông tin"
         ]
       ],

@@ -44,81 +44,59 @@ class BooksMngr extends \Core\Controller
         }
       }
       if ($_POST['action'] == "update") {
-        // $filename = $_FILES["image"]["name"];
-        // $tempname = $_FILES["image"]["tmp_name"];
-        // $folder = "./assets/images/" . $filename;
-        // $uploadFileRes = move_uploaded_file($tempname, $folder);
+        $id = $_POST['id'];
+        $imageName = Books::getById($id)[0]["image"];
+        if ($_FILES["image"]["name"] !== "") {
+          $imageName = $_FILES["image"]["name"];
+          $tempname = $_FILES["image"]["tmp_name"];
+          $folder = "./assets/images/" . $imageName;
+          $uploadFileRes = move_uploaded_file($tempname, $folder);
+        }
 
-        // $id = $_POST['id'];
-        // $title = $_POST['title'];
-        // $price = $_POST['price'];
-        // $description = $_POST['description'];
-        // $cate = $_POST['cate'];
-        // $author = $_POST['author'];
-        // $res = Books::update($id, $title, $description, $price, $filename, $cate, $author);
-        // if ($res == true) {
-        //   $type = 'success';
-        //   $notify = "Thêm mới thành công";
-        // } else {
-        //   $type = 'danger';
-        //   $notify = "Thêm mới thất bại";
-        // }
+        $title = $_POST['title'];
+        $price = $_POST['price'];
+        $description = $_POST['description'];
+        $cate = $_POST['cate'];
+        $author = $_POST['author'];
+        $res = Books::update($id, $title, $description, $price, $imageName, $cate, $author);
+        if ($res == true) {
+          $type = 'success';
+          $notify = "Cập nhật thành công";
+        } else {
+          $type = 'danger';
+          $notify = "Cập nhật thất bại";
+        }
       }
-      echo json_encode($_POST);
 
-      // if ($_POST['action'] == "delete") {
-      //   $id = $_POST['id'];
-      //   $res = User::deleteById($id);
-      //   if ($res == true) {
-      //     $type = 'success';
-      //     $notify = "Xóa user thành công";
-      //   } else {
-      //     $type = 'danger';
-      //     $notify = "Xóa user thất bại";
-      //   }
-      // }
+      if ($_POST['action'] == "delete") {
+        $id = $_POST['id'];
+        $res = Books::deleteById($id);
+        if ($res == true) {
+          $type = 'success';
+          $notify = "Xóa thành công";
+        } else {
+          $type = 'danger';
+          $notify = "Xóa thất bại";
+        }
+      }
     }
-    // $users = User::getAll();
-    // View::renderTemplate('AdminDashboard/User/index.html', [
-    //   'status' => 'OK',
-    //   'notify' => ['type' => $type, 'detail' => $notify],
-    //   'location' => [
-    //     [
-    //       'url' => "/admin/users",
-    //       'label' => "Quản lý user"
-    //     ],
-    //     [
-    //       'url' => "/admin/users",
-    //       'label' => "Danh sách user"
-    //     ]
-    //   ],
-    //   'users' => $users,
-    // ]);
+    $books = Books::getAll();
+    View::renderTemplate('AdminDashboard/Books/index.html', [
+      'status' => 'OK',
+      'notify' => ['type' => $type, 'detail' => $notify],
+      'location' => [
+        [
+          'url' => "/admin/books",
+          'label' => "Quản lý sách"
+        ],
+        [
+          'url' => "/admin/books",
+          'label' => "Danh sách đầu sách"
+        ]
+      ],
+      'books' => $books,
+    ]);
   }
-
-  /**
-   * Show the index page
-   *
-   * @return void
-   */
-  // public function updateAction()
-  // {
-  //   $user = User::getById(9)[0];
-  //   View::renderTemplate('AdminDashboard/User/update.html', [
-  //     'status' => 'OK',
-  //     'location' => [
-  //       [
-  //         'url' => "/admin/users",
-  //         'label' => "Quản lý user"
-  //       ],
-  //       [
-  //         'url' => "/admin/users",
-  //         'label' => "Cập nhật thông tin"
-  //       ]
-  //     ],
-  //     'data' => $user
-  //   ]);
-  // }
 
   /**
    * Show the index page
@@ -140,8 +118,55 @@ class BooksMngr extends \Core\Controller
         ]
       ],
       'data' => [
-        'categories' => ["tiểu thuyết", "âm nhạc", "tình cảm", "giả tưởng"],
-        'author' => ["Phạm Khánh Duy", "Đào Cẩm Tú", "Dai Duong Duong"],
+        'categories' => [
+          ['id' => 0, 'name' => "tiểu thuyết"],
+          ["id" => 1, "name" => "âm nhạc"],
+          ["id" => 2, "name" => "tình cảm"],
+          ["id" => 3, "name" => "giả tưởng"]
+        ],
+        'author' => [
+          ["id" => 0, "name" => "Phạm Khánh Duy"],
+          ["id" => 1, "name" => "Đào Cẩm Tú"],
+          ["id" => 2, "name" => "Dai Duong Duong"]
+        ],
+      ]
+    ]);
+  }
+
+  /**
+   * Show the index page
+   *
+   * @return void
+   */
+  public function updateAction()
+  {
+    $id = $this->route_params['id'];
+    $book = Books::getById($id)[0];
+    View::renderTemplate('AdminDashboard/Books/update.html', [
+      'status' => 'OK',
+      'location' => [
+        [
+          'url' => "/admin/books",
+          'label' => "Quản lý sách"
+        ],
+        [
+          'url' => "",
+          'label' => "Sửa thông tin sách"
+        ]
+      ],
+      'book' => $book,
+      'data' => [
+        'categories' => [
+          ['id' => 0, 'name' => "tiểu thuyết"],
+          ["id" => 1, "name" => "âm nhạc"],
+          ["id" => 2, "name" => "tình cảm"],
+          ["id" => 3, "name" => "giả tưởng"]
+        ],
+        'author' => [
+          ["id" => 0, "name" => "Phạm Khánh Duy"],
+          ["id" => 1, "name" => "Đào Cẩm Tú"],
+          ["id" => 2, "name" => "Dai Duong Duong"]
+        ],
       ]
     ]);
   }

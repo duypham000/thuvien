@@ -14,39 +14,53 @@ body %}
     </a>
     {% endfor %}
   </div>
-  <div class="user-wrapper">
-    <div class="heading-1 title">Danh sách user</div>
+  <div class="bookManager-wrapper">
+    <div class="heading-1 title">Danh sách đầu sách</div>
     {% if notify.type != NULL %}
     <div class="alert alert-{{notify.type}} body-2" role="alert">
       {{notify.detail}}
     </div>
     {% endif %}
-    <a href="/admin/users/them-moi" class="sub-heading-2 add-user">Thêm mới</a>
+    <a href="/admin/books/them-moi" class="sub-heading-2 add-book-link"
+      >Thêm mới</a
+    >
     <table class="table table-hover table-dark body-2">
       <thead>
         <tr class="heading-3">
-          <th scope="col">Tên người dùng</th>
-          <th scope="col">Mật khẩu</th>
-          <th scope="col">Vai trò</th>
+          <th scope="col">Ảnh bìa</th>
+          <th scope="col">Tựa đề</th>
+          <th scope="col">Giá</th>
+          <th scope="col">Nội dung</th>
+          <th scope="col">Thể loại</th>
+          <th scope="col">Tác giả</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        {% for user in users %}
+        {% for book in books %}
         <tr>
-          <th>{{user.username}}</th>
-          <td>{{user.password}}</td>
-          <td>{{user.role}}</td>
+          <td>
+            <div class="book-img">
+              <img src="/assets/images/{{book.image}}" alt="" />
+            </div>
+          </td>
+          <td>{{book.title}}</td>
+          <td>{{book.price}}</td>
+          <td class="book-desc">
+            <span>{{book.description}}</span>
+          </td>
+          <td>{{book.categories}}</td>
+          <td>{{book.authorId}}</td>
           <td>
             <a
-              href="/admin/users/sua-thong-tin/{{user.id}}"
+              href="/admin/books/cap-nhat/{{book.id}}"
               class="btn btn-success sub-heading-3"
               >Sửa</a
             >
-            <form action="/admin/users" method="post" style="display: inline">
+            <form action="/admin/books" method="post" style="display: inline">
               <input
                 type="text"
-                value="{{user.id}}"
+                value="{{book.id}}"
                 name="id"
                 style="display: none"
               />
@@ -67,5 +81,5 @@ body %}
   </div>
 </div>
 {% endblock %} {% block css %}
-<link rel="stylesheet" href="/assets/css/private/user.css" />
+<link rel="stylesheet" href="/assets/css/private/book.css" />
 {% endblock %} {% block js %} {% endblock %}

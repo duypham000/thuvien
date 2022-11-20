@@ -15,13 +15,19 @@ body %}
     {% endfor %}
   </div>
   <div class="body-2 book-container-wrapper">
-    <div class="heading-1 title">Thêm sách</div>
+    <div class="heading-1 title">Sửa thông tin sách</div>
     <form
       class="input-form"
       action="/admin/books"
       method="post"
       enctype="multipart/form-data"
     >
+      <input
+          type="number"
+          style="display: none"
+          value="{{book.id}}"
+          name="id"
+      />
       <div class="form-group">
         <label for="title-inpt" class="sub-heading-4">Tựa đề</label>
         <input
@@ -31,6 +37,7 @@ body %}
           placeholder="Tựa đề sách"
           required
           name="title"
+          value="{{book.title}}"
         />
       </div>
 
@@ -43,18 +50,20 @@ body %}
           placeholder="Giá niêm yết"
           required
           name="price"
+          value="{{book.price}}"
         />
       </div>
 
       <div class="form-group">
         <label for="img-inpt" class="sub-heading-4">Ảnh bìa</label>
         <br />
-        <label for="img-inpt"><img id="image-upload" /></label>
+        <label for="img-inpt"
+          ><img id="image-upload" src="/assets/images/{{book.image}}"
+        /></label>
         <input
           type="file"
           class="form-control sub-heading-4"
           id="img-inpt"
-          required
           name="image"
           onchange="loadFile(event)"
         />
@@ -71,10 +80,18 @@ body %}
           placeholder="Nội dung vắn tắt hoặc đôi dòng giới thiệu"
           required=""
           name="description"
-        ></textarea>
+        >
+{{book.description}}</textarea
+        >
       </div>
-      <input type="text" style="display: none" id="cate-value" name="cate" />
       <div class="form-group category-wrapper">
+        <input
+          type="text"
+          style="display: none"
+          value="{{book.categories}}"
+          id="cate-value"
+          name="cate"
+        />
         <label for="cate-slc" class="sub-heading-4">Thể loại</label>
         <select class="form-control sub-heading-4" id="cate-slc" multiple>
           {% for cate in data.categories %}
@@ -91,7 +108,9 @@ body %}
           id="author-slc"
         >
           {% for author in data.author %}
-          <option value="{{author.id}}">{{author.name}}</option>
+          <option value="{{author.id}}" {% if author.id == book.authorId %} selected {% endif %}>
+            {{author.name}}
+          </option>
           {% endfor %}
         </select>
       </div>
@@ -100,7 +119,7 @@ body %}
         type="submit"
         class="btn btn-outline-info btn-lg btn-block sub-heading-2"
         name="action"
-        value="add"
+        value="update"
         id="act"
       >
         Lưu thông tin
@@ -125,11 +144,15 @@ body %}
   });
 
   var $cate = $("#cate-slc");
-  $cate.select2({
-    minimumResultsForSearch: Infinity,
-    selectionCssClass: "select-wrapper",
-    placeholder: "Chủ đề sách",
-  });
+  var cateData = "{{book.categories}}".split(",");
+  $cate
+    .select2({
+      minimumResultsForSearch: Infinity,
+      selectionCssClass: "select-wrapper",
+      placeholder: "Chủ đề sách",
+    })
+    .val(cateData)
+    .trigger("change");
   $cate.on("change", function () {
     $("#cate-value").val($cate.val().join(","));
   });
