@@ -1,0 +1,147 @@
+{% extends "dashboardBase.html" %} {% block title %}Home{% endblock %} {% block
+body %}
+
+<div>
+  <div class="navigation-wrapper">
+    <a href="/admin">
+      <i class="fa-solid fa-house"></i>
+      <span class="sub-heading-4">Trang chủ</span>
+    </a>
+    {% for locate in location %}
+    <span><i class="fas fa-greater-than"></i></span>
+    <a href="{{locate.url}}">
+      <span class="sub-heading-4">{{locate.label}}</span>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="author-wrapper">
+    <div class="heading-1 title">Danh sách tác giả</div>
+    {% if notify.type != NULL %}
+    <div class="alert alert-{{notify.type}} body-2" role="alert">
+      {{notify.detail}}
+    </div>
+    {% endif %}
+    <label class="sub-heading-2 add-book-link" for="add-author-name"
+      >Thêm mới</label
+    >
+    <form class="form-group" action="/admin/authors" method="post">
+      <input
+        type="text"
+        class="form-control sub-heading-4"
+        placeholder="Tên tác giả"
+        id="add-author-name"
+        name="name"
+      />
+      <button
+        class="btn btn-success sub-heading-3"
+        type="submit"
+        name="action"
+        value="add"
+        style="margin-left: 8px"
+      >
+        Thêm mới
+      </button>
+    </form>
+
+    <table class="table table-hover table-dark body-2">
+      <thead>
+        <tr class="heading-3">
+          <th scope="col">Tên Tác giả</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for author in authors %}
+        <tr>
+          <td>{{author.name}}</td>
+          <td>
+            <button
+              class="btn btn-success sub-heading-3"
+              data-bs-toggle="modal"
+              data-bs-target="#modal{{author.id}}"
+            >
+              Sửa
+            </button>
+
+            <div
+              class="modal fade"
+              id="modal{{author.id}}"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="modal{{author.id}}Label"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <form
+                  class="modal-content form-group"
+                  action="/admin/authors"
+                  method="post"
+                >
+                  <div class="modal-header">
+                    <h5 class="sub-heading-4" style="color: #000">
+                      Sửa tên tác giả
+                    </h5>
+                  </div>
+                  <div class="modal-body">
+                    <input
+                      type="text"
+                      class="form-control sub-heading-4"
+                      placeholder="Tên tác giả"
+                      id="add-author-name"
+                      name="name"
+                      value="{{author.name}}"
+                    />
+                    <input
+                      type="text"
+                      value="{{author.id}}"
+                      name="id"
+                      style="display: none"
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      class="btn btn-danger sub-heading-3"
+                      type="button"
+                      data-bs-dismiss="modal"
+                    >
+                      Hủy
+                    </button>
+                    <button
+                      type="submit"
+                      name="action"
+                      value="update"
+                      class="btn btn-success sub-heading-3"
+                    >
+                      Lưu
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <form action="/admin/authors" method="post" style="display: inline">
+              <input
+                type="text"
+                value="{{author.id}}"
+                name="id"
+                style="display: none"
+              />
+              <button
+                class="btn btn-danger sub-heading-3"
+                type="submit"
+                name="action"
+                value="delete"
+              >
+                Xóa
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %} {% block css %}
+<link rel="stylesheet" href="/assets/css/private/author.css" />
+{% endblock %} {% block js %}{% endblock %}

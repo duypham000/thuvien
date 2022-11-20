@@ -43,6 +43,10 @@ $router->add('admin/books', ['namespace' => 'Admin', 'controller' => 'BooksMngr'
 $router->add('admin/books/them-moi', ['namespace' => 'Admin', 'controller' => 'BooksMngr', 'action' => 'insert']);
 $router->add('admin/books/cap-nhat/{id:\d+}', ['namespace' => 'Admin', 'controller' => 'BooksMngr', 'action' => 'update']);
 
+$router->add('admin/authors', ['namespace' => 'Admin', 'controller' => 'AuthorMngr', 'action' => 'index']);
+$router->add('admin/authors/them-moi', ['namespace' => 'Admin', 'controller' => 'AuthorMngr', 'action' => 'insert']);
+$router->add('admin/authors/cap-nhat/{id:\d+}', ['namespace' => 'Admin', 'controller' => 'AuthorMngr', 'action' => 'update']);
+
 $router->add('{controller}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 

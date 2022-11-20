@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Admin;
 
+use App\Models\Author;
 use App\Models\Books;
 use \Core\View;
 
@@ -81,6 +82,21 @@ class BooksMngr extends \Core\Controller
       }
     }
     $books = Books::getAll();
+
+    // foreach ($books as &$value) {
+    //   $listCateName = "";
+    //   $listIdCategories =  explode(",", $value["categories"]);
+    //   foreach ($listIdCategories as $key => $value) {
+    //     if ($key !== 0) {
+    //       $listCateName .= ",";
+    //     }
+    //     $listCateName .= Category::getById($value)["name"];
+    //   }
+
+    //   $value["author"] = Author::getById($value["author"]);
+    //   $value["categories"] = $listCateName;
+    // }
+
     View::renderTemplate('AdminDashboard/Books/index.html', [
       'status' => 'OK',
       'notify' => ['type' => $type, 'detail' => $notify],
