@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\Author;
 use App\Models\Books;
+use App\Models\Category;
 use App\Models\User;
 use \Core\View;
 
@@ -23,6 +25,15 @@ class Book extends \Core\Controller
   {
     $id = $this->route_params['id'];
     $book = Books::getById($id);
+
+    $listCateName = [];
+    $listIdCategories =  explode(",", $book["categories"]);
+    foreach ($listIdCategories as $keyCate => $valueCate) {
+      $cateName = Category::getById($valueCate)["name"];
+      array_push($listCateName, ["id" => $valueCate, "name" => $cateName]);
+    }
+    $author = Author::getById($book["authorId"])["name"];
+
     View::renderTemplate('Book/index.html', [
       'status' => 'OK',
       'location' => [
@@ -34,8 +45,9 @@ class Book extends \Core\Controller
           "title" => $book["title"],
           "description" => nl2br($book["description"]),
           "thumble" => "/assets/images/" . $book["image"],
-          "author" => $book["authorId"],
-          "categories" => ["Tiểu thuyết", "Âm nhạc", "Tình cảm", "Giả tưởng"],
+          "author" => $author,
+          "authorId" => $book["authorId"],
+          "categories" => $listCateName,
           "followCount" => 6,
           "countLeft" => 15,
           "total" => 20,

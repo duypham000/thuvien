@@ -35,11 +35,16 @@
             {{data.detailBook.description | raw}}
           </div>
           <div class="sub-heading-2 author">
-            <span>Tác giả</span>: <a href="#">{{data.detailBook.author}}</a>
+            <span>Tác giả</span>:
+            <a href="/danh-sach/tacgia/{{data.detailBook.authorId}}"
+              >{{data.detailBook.author}}</a
+            >
           </div>
           <div class="sub-heading-2 categories">
             <span>Thể loại</span>: {% for cate in data.detailBook.categories %}
-            <a href="#" class="category">{{cate}}</a>
+            <a href="/danh-sach/theloai/{{cate.id}}" class="category"
+              >{{cate.name}}</a
+            >
             {% endfor %}
           </div>
         </div>
