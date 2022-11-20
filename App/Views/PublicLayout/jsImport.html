@@ -8,5 +8,17 @@
     $('[data-toggle="tooltip"]').tooltip({
       title: getCookie("username"),
     });
+    if (!getCookie("username")) {
+      $(".sidebar > a").css("display", "none");
+      $("#login-sidebarRoute").css("display", "inline-block");
+    } else {
+      $(".sidebar > a").css("display", "inline-block");
+      $("#login-sidebarRoute").css("display", "none");
+    }
+    if (getCookie("role") === "admin") {
+      $("#adminRoute").css("display", "inline-block");
+    } else if (getCookie("role") === "user") {
+      $("#adminRoute").css("display", "none");
+    }
   });
 </script>

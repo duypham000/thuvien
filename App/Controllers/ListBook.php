@@ -23,47 +23,27 @@ class ListBook extends \Core\Controller
    */
   public function indexAction()
   {
+    $listBook = [];
+    $books = Books::getAll();
+    foreach ($books as $book) {
+      array_push($listBook, [
+        "title" => $book["title"],
+        "href" => "/sach/" . $book["id"],
+        "author" => Author::getById($book["authorId"])["name"],
+        "price" => number_format($book["price"], 0, ",", ".") . "đ",
+        "thumble" => "/assets/images/" . $book["image"],
+      ]);
+    }
+
     View::renderTemplate('ListBook/index.html', [
       'status' => 'OK',
       'location' => [
-        ["label" => "danh sách", "url" => "#"],
-        ["label" => "tác giả", "url" => ""]
+        ["label" => "danh sách", "url" => "/danh-sach"],
+        ["label" => "tất cả sách", "url" => ""]
       ],
-      'title' => "Danh sách demo",
+      'title' => "Tất cả sách",
       'data' => [
-        'books' => [
-          [
-            "title" => "Hành tinh song song",
-            "href" => "/sach/15",
-            "author" => "Duyn",
-            "price" => "125,000 đ",
-            "thumble" => "/assets/images/book-sample.jpg",
-          ], [
-            "title" => "Hành tinh cho kẻ nghĩ nhiều",
-            "href" => "/sach/15",
-            "author" => "Duyn",
-            "price" => "125,000 đ",
-            "thumble" => "/assets/images/book-sample.jpg",
-          ], [
-            "title" => "Hiệu ứng chim mồi",
-            "href" => "/sach/15",
-            "author" => "Duyn",
-            "price" => "125,000 đ",
-            "thumble" => "/assets/images/book-sample.jpg",
-          ], [
-            "title" => "Bạn chẳng thông minh lắm đâu",
-            "href" => "/sach/15",
-            "author" => "Duyn",
-            "price" => "125,000 đ",
-            "thumble" => "/assets/images/book-sample.jpg",
-          ], [
-            "title" => "Thiên nga đen",
-            "href" => "/sach/15",
-            "author" => "Duyn",
-            "price" => "125,000 đ",
-            "thumble" => "/assets/images/book-sample.jpg",
-          ],
-        ],
+        'books' => $listBook,
       ]
     ]);
   }
@@ -89,7 +69,7 @@ class ListBook extends \Core\Controller
     View::renderTemplate('ListBook/index.html', [
       'status' => 'OK',
       'location' => [
-        ["label" => "thể loại", "url" => ""],
+        ["label" => "thể loại", "url" => "/danh-sach"],
         ["label" => $cateName, "url" => ""]
       ],
       'title' => "Sách thuộc thể loại " . $cateName,
@@ -119,7 +99,7 @@ class ListBook extends \Core\Controller
     View::renderTemplate('ListBook/index.html', [
       'status' => 'OK',
       'location' => [
-        ["label" => "tác giả", "url" => ""],
+        ["label" => "tác giả", "url" => "/danh-sach"],
         ["label" => $authorName, "url" => ""]
       ],
       'title' => "Sách do tác giả " . $authorName . " viết",
