@@ -59,3 +59,8 @@ th {
 .author-wrapper .form-group > input:focus {
   box-shadow: none;
 }
+
+td,
+th {
+  vertical-align: middle;
+}

@@ -21,3 +21,8 @@
 a {
   width: fit-content;
 }
+
+td,
+th {
+  vertical-align: middle;
+}
