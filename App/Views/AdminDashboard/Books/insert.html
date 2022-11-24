@@ -47,6 +47,34 @@ body %}
       </div>
 
       <div class="form-group">
+        <label for="quantity-inpt" class="sub-heading-4">Số lượng</label>
+        <input
+          type="number"
+          class="form-control sub-heading-4"
+          id="quantity-inpt"
+          placeholder="Số lượng"
+          required
+          name="quantity"
+          value="{{book.quantity}}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="quantityLeft-inpt" class="sub-heading-4"
+          >Số lượng còn lại</label
+        >
+        <input
+          type="number"
+          class="form-control sub-heading-4"
+          id="quantityLeft-inpt"
+          placeholder="Số lượng còn lại"
+          required
+          name="quantityLeft"
+          value="{{book.quantityLeft}}"
+        />
+      </div>
+
+      <div class="form-group">
         <label for="img-inpt" class="sub-heading-4">Ảnh bìa</label>
         <br />
         <label for="img-inpt"><img id="image-upload" /></label>

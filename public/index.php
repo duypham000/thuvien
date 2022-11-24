@@ -29,6 +29,8 @@ $router = new Core\Router();
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 // config variable route
 $router->add('sach/{id:\d+}', ['controller' => 'Book', 'action' => 'index']);
+$router->add('mua-hang/{id:\d+}', ['controller' => 'Order', 'action' => 'index']);
+
 $router->add('danh-sach', ['controller' => 'ListBook', 'action' => 'index']);
 $router->add('danh-sach/the-loai/{id:\w+}', ['controller' => 'ListBook', 'action' => 'category']);
 $router->add('danh-sach/tac-gia/{id:\w+}', ['controller' => 'ListBook', 'action' => 'author']);

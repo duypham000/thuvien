@@ -3,11 +3,30 @@
 <script src="/assets/libs/bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/libs/select2-4.1.0-rc.0/dist/js/select2.full.min.js"></script>
 <script src="/assets/js/authen.js"></script>
+
 <script>
   $(function () {
-    checkLogin();
-    $('[data-toggle="tooltip"]').tooltip({
-      title: getCookie("username"),
+    if (getCookie("username") && getCookie("role")) {
+      $(".sidebar-show > .user .user-name").text(getCookie("username"));
+      $(".sidebar-show > .user .user-role").text(getCookie("role"));
+    }
+
+    $("#btn-show-sidebar").on("click", function () {
+      console.log("hello");
+      $(".sidebar").css("transform", "translateX(-5rem)");
+      $(".sidebar-show").css("transform", "translateX(0rem)");
+    });
+    $("#btn-close-sidebar").on("click", function () {
+      $(".sidebar").css("transform", "translateX(0rem)");
+      $(".sidebar-show").css("transform", "translateX(-32rem)");
+    });
+    $(document).mouseup(function (e) {
+      var container = $(".sidebar-show");
+
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        $(".sidebar").css("transform", "translateX(0rem)");
+        $(".sidebar-show").css("transform", "translateX(-32rem)");
+      }
     });
   });
 </script>

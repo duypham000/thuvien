@@ -217,7 +217,8 @@
         </div>
       </form>
       <p class="text--center">
-        Không có tài khoản? <a href="#">Đăng ký ngay</a>
+        Không có tài khoản? Hãy liên hệ quản trị viên.
+        <a href="/">Quay về trang chủ</a>
         <i class="fa-solid fa-arrow-right icon"></i>
       </p>
     </div>
@@ -250,7 +251,7 @@
         console.log(user);
         if (!(user === "") && role === "admin") {
           window.location.href = "/admin";
-        }else if(!(user==="")){
+        } else if (!(user === "")) {
           window.location.href = "/";
         }
       }

@@ -13,6 +13,7 @@
 }
 .sidebar > a {
   padding: 1.2rem;
+  text-decoration: none;
 }
 .sidebar > a:hover {
   background: rgba(255, 255, 255, 0.05);

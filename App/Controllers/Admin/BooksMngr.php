@@ -36,7 +36,9 @@ class BooksMngr extends \Core\Controller
         $description = $_POST['description'];
         $cate = $_POST['cate'];
         $author = $_POST['author'];
-        $res = Books::insert($title, $description, $price, $filename, $cate, $author);
+        $quantity = $_POST['quantity'];
+        $quantityLeft = $_POST['quantityLeft'];
+        $res = Books::insert($title, $description, $price, $filename, $cate, $author, $quantity, $quantityLeft);
         if ($res == true) {
           $type = 'success';
           $notify = "Thêm mới thành công";
@@ -48,6 +50,10 @@ class BooksMngr extends \Core\Controller
       if ($_POST['action'] == "update") {
         $id = $_POST['id'];
         $imageName = Books::getById($id)["image"];
+        $followCount = Books::getById($id)["followCount"];
+        $orderCount = Books::getById($id)["orderCount"];
+        $imageName = Books::getById($id)["image"];
+
         if ($_FILES["image"]["name"] !== "") {
           $imageName = $_FILES["image"]["name"];
           $tempname = $_FILES["image"]["tmp_name"];
@@ -60,7 +66,21 @@ class BooksMngr extends \Core\Controller
         $description = $_POST['description'];
         $cate = $_POST['cate'];
         $author = $_POST['author'];
-        $res = Books::update($id, $title, $description, $price, $imageName, $cate, $author);
+        $quantity = $_POST['quantity'];
+        $quantityLeft = $_POST['quantityLeft'];
+        $res = Books::update(
+          $id,
+          $title,
+          $description,
+          $price,
+          $imageName,
+          $cate,
+          $author,
+          $quantity,
+          $followCount,
+          $orderCount,
+          $quantityLeft
+        );
         if ($res == true) {
           $type = 'success';
           $notify = "Cập nhật thành công";

@@ -13,10 +13,7 @@
 }
 .sidebar > a {
   padding: 1.2rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-decoration: none;
 }
 .sidebar > a:hover {
   background: rgba(255, 255, 255, 0.05);
@@ -41,13 +38,92 @@
   border-radius: 50%;
 }
 
+#btn-show-sidebar,
+#btn-close-sidebar {
+  cursor: pointer;
+}
+
 .sidebar > .logout {
   margin-top: auto;
   cursor: pointer;
 }
 
-.tooltip.show {
-  font-size: 1.4rem;
-  font-weight: 600;
-  line-height: 2rem;
+/* sidebar show */
+.sidebar-show {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0.6rem;
+  box-shadow: 0.5rem 0 0.1rem rgba(0, 0, 0, 0.3);
+  background: #0a0a0a;
+  left: 0;
+  top: 0;
+  width: 32rem;
+  transform: translateX(-32rem);
+  transition: all 0.3s;
+  height: 100%;
+  z-index: 99;
+  padding: 0.8rem;
+}
+.sidebar-show > a {
+  padding: 1.2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.sidebar-show .line {
+  border-top: 1px solid #999999;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.sidebar-show > a:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-show > a > span {
+  color: #999999;
+  width: 3.2rem;
+  font-size: 1.5rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-show > a > span:first-child {
+  margin-right: 1.6rem;
+}
+.sidebar-show > a > span:hover {
+  color: #999999;
+}
+
+.sidebar-show > .user {
+  margin-bottom: 8px;
+}
+
+.sidebar-show > .user .user-role {
+  color: #3498db;
+}
+
+.sidebar-show > a > .user-icon {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  margin-right: 1.6rem;
+}
+
+.sidebar-show > .logout {
+  margin-top: auto;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-show > .logout > span {
+  margin-left: 1.6rem;
+  width: fit-content;
 }

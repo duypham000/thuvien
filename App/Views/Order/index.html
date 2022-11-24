@@ -1,9 +1,8 @@
-{% extends "dashboardBase.html" %} {% block title %}Home{% endblock %} {% block
-body %}
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block body %}
 
 <div>
   <div class="navigation-wrapper">
-    <a href="/admin">
+    <a href="/">
       <i class="fa-solid fa-house"></i>
       <span class="sub-heading-4">Trang chủ</span>
     </a>
@@ -15,21 +14,15 @@ body %}
     {% endfor %}
   </div>
   <div class="body-2 book-container-wrapper">
-    <div class="heading-1 title">Sửa thông tin sách</div>
+    <div class="heading-1 title">Thanh toán đơn sách</div>
     <form
       class="input-form"
       action="/admin/books"
       method="post"
       enctype="multipart/form-data"
     >
-      <input
-          type="number"
-          style="display: none"
-          value="{{book.id}}"
-          name="id"
-      />
       <div class="form-group">
-        <label for="title-inpt" class="sub-heading-4">Tựa đề</label>
+        <label for="title-inpt" class="sub-heading-4">Tên khách hàng</label>
         <input
           type="text"
           class="form-control sub-heading-4"
@@ -37,12 +30,23 @@ body %}
           placeholder="Tựa đề sách"
           required
           name="title"
-          value="{{book.title}}"
         />
       </div>
 
       <div class="form-group">
-        <label for="price-inpt" class="sub-heading-4">Giá niêm yết</label>
+        <label for="title-inpt" class="sub-heading-4">Địa chỉ</label>
+        <input
+          type="text"
+          class="form-control sub-heading-4"
+          id="title-inpt"
+          placeholder="Tựa đề sách"
+          required
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="price-inpt" class="sub-heading-4">Số lượng</label>
         <input
           type="number"
           class="form-control sub-heading-4"
@@ -50,7 +54,6 @@ body %}
           placeholder="Giá niêm yết"
           required
           name="price"
-          value="{{book.price}}"
         />
       </div>
 
@@ -68,7 +71,9 @@ body %}
       </div>
 
       <div class="form-group">
-        <label for="quantityLeft-inpt" class="sub-heading-4">Số lượng còn lại</label>
+        <label for="quantityLeft-inpt" class="sub-heading-4"
+          >Số lượng còn lại</label
+        >
         <input
           type="number"
           class="form-control sub-heading-4"
@@ -83,13 +88,12 @@ body %}
       <div class="form-group">
         <label for="img-inpt" class="sub-heading-4">Ảnh bìa</label>
         <br />
-        <label for="img-inpt"
-          ><img id="image-upload" src="/assets/images/{{book.image}}"
-        /></label>
+        <label for="img-inpt"><img id="image-upload" /></label>
         <input
           type="file"
           class="form-control sub-heading-4"
           id="img-inpt"
+          required
           name="image"
           onchange="loadFile(event)"
         />
@@ -106,18 +110,10 @@ body %}
           placeholder="Nội dung vắn tắt hoặc đôi dòng giới thiệu"
           required=""
           name="description"
-        >
-{{book.description}}</textarea
-        >
+        ></textarea>
       </div>
+      <input type="text" style="display: none" id="cate-value" name="cate" />
       <div class="form-group category-wrapper">
-        <input
-          type="text"
-          style="display: none"
-          value="{{book.categories}}"
-          id="cate-value"
-          name="cate"
-        />
         <label for="cate-slc" class="sub-heading-4">Thể loại</label>
         <select class="form-control sub-heading-4" id="cate-slc" multiple>
           {% for cate in data.categories %}
@@ -134,9 +130,7 @@ body %}
           id="author-slc"
         >
           {% for author in data.author %}
-          <option value="{{author.id}}" {% if author.id == book.authorId %} selected {% endif %}>
-            {{author.name}}
-          </option>
+          <option value="{{author.id}}">{{author.name}}</option>
           {% endfor %}
         </select>
       </div>
@@ -145,7 +139,7 @@ body %}
         type="submit"
         class="btn btn-outline-info btn-lg btn-block sub-heading-2"
         name="action"
-        value="update"
+        value="add"
         id="act"
       >
         Lưu thông tin
@@ -170,15 +164,11 @@ body %}
   });
 
   var $cate = $("#cate-slc");
-  var cateData = "{{book.categories}}".split(",");
-  $cate
-    .select2({
-      minimumResultsForSearch: Infinity,
-      selectionCssClass: "select-wrapper",
-      placeholder: "Chủ đề sách",
-    })
-    .val(cateData)
-    .trigger("change");
+  $cate.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "select-wrapper",
+    placeholder: "Chủ đề sách",
+  });
   $cate.on("change", function () {
     $("#cate-value").val($cate.val().join(","));
   });

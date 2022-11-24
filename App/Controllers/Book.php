@@ -48,10 +48,10 @@ class Book extends \Core\Controller
           "author" => $author,
           "authorId" => $book["authorId"],
           "categories" => $listCateName,
-          "followCount" => 6,
-          "countLeft" => 15,
-          "total" => 20,
-          "totalGet" => 400,
+          "followCount" => $book["followCount"],
+          "countLeft" => $book["quantityLeft"],
+          "total" => $book["quantity"],
+          "totalGet" => $book["orderCount"],
         ],
         'books' => [
           [

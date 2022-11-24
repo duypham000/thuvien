@@ -41,8 +41,19 @@ class Books extends \Core\Model
      *
      * @return bool
      */
-    public static function update($id, $title, $desc, $price, $image, $categories, $authorId)
-    {
+    public static function update(
+        $id,
+        $title,
+        $desc,
+        $price,
+        $image,
+        $categories,
+        $authorId,
+        $quantity,
+        $followCount,
+        $orderCount,
+        $quantityLeft
+    ) {
         try {
             $db = static::getDB();
             $db->query('UPDATE books SET title = "' . $title .
@@ -51,6 +62,29 @@ class Books extends \Core\Model
                 '", image = "' . $image .
                 '", categories = "' . $categories .
                 '", authorId = "' . $authorId .
+                '", quantity = "' . $quantity .
+                '", followCount = "' . $followCount .
+                '", orderCount = "' . $orderCount .
+                '", quantityLeft = "' . $quantityLeft .
+                '" WHERE id = ' . $id . ' ');
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
+    /**
+     * Update user by id
+     *
+     * @return bool
+     */
+    public static function changeQuantity(
+        $id,
+        $quantityLeft
+    ) {
+        try {
+            $db = static::getDB();
+            $db->query('UPDATE books SET quantityLeft = "' . $quantityLeft .
                 '" WHERE id = ' . $id . ' ');
             return true;
         } catch (\Throwable $th) {
@@ -79,12 +113,19 @@ class Books extends \Core\Model
      *
      * @return bool
      */
-    public static function insert($title, $desc, $price, $image, $categories, $authorId)
+    public static function insert($title, $desc, $price, $image, $categories, $authorId, $quantity, $quantityLeft)
     {
         try {
             $db = static::getDB();
-            $db->query('INSERT INTO books (id, title, description, price, image, categories, authorId) VALUES (NULL, "' .
-                $title . '","' . $desc . '","' . $price . '","' . $image . '","' . $categories . '","' . $authorId . '")');
+            $db->query('INSERT INTO books (id, title, description, price, image, categories, authorId, quantity, quantityLeft) VALUES (NULL, "' .
+                $title . '","' .
+                $desc . '","' .
+                $price . '","' .
+                $image . '","' .
+                $categories . '","' .
+                $authorId . '","' .
+                $quantity . '","' .
+                $quantityLeft . '")');
             return true;
         } catch (\Throwable $th) {
             return false;
