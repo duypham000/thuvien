@@ -49,6 +49,7 @@ $router->add('admin/books/cap-nhat/{id:\d+}', ['namespace' => 'Admin', 'controll
 
 $router->add('admin/authors', ['namespace' => 'Admin', 'controller' => 'AuthorMngr', 'action' => 'index']);
 $router->add('admin/categories', ['namespace' => 'Admin', 'controller' => 'CategoryMngr', 'action' => 'index']);
+$router->add('admin/locations', ['namespace' => 'Admin', 'controller' => 'LocationMngr', 'action' => 'index']);
 
 $router->add('{controller}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);

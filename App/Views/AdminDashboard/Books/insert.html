@@ -35,14 +35,14 @@ body %}
       </div>
 
       <div class="form-group">
-        <label for="price-inpt" class="sub-heading-4">Giá niêm yết</label>
+        <label for="price-inpt" class="sub-heading-4">Ngày nhập</label>
         <input
-          type="number"
+          type="date"
           class="form-control sub-heading-4"
           id="price-inpt"
-          placeholder="Giá niêm yết"
+          placeholder="Ngày nhập"
           required
-          name="price"
+          name="dateIn"
         />
       </div>
 
@@ -55,22 +55,20 @@ body %}
           placeholder="Số lượng"
           required
           name="quantity"
-          value="{{book.quantity}}"
         />
       </div>
 
       <div class="form-group">
         <label for="quantityLeft-inpt" class="sub-heading-4"
-          >Số lượng còn lại</label
+          >Số lượng còn tốt</label
         >
         <input
           type="number"
           class="form-control sub-heading-4"
-          id="quantityLeft-inpt"
-          placeholder="Số lượng còn lại"
+          id="quantityGood-inpt"
+          placeholder="Số lượng còn tốt"
           required
-          name="quantityLeft"
-          value="{{book.quantityLeft}}"
+          name="numOfGood"
         />
       </div>
 
@@ -82,7 +80,6 @@ body %}
           type="file"
           class="form-control sub-heading-4"
           id="img-inpt"
-          required
           name="image"
           onchange="loadFile(event)"
         />
@@ -101,8 +98,8 @@ body %}
           name="description"
         ></textarea>
       </div>
-      <input type="text" style="display: none" id="cate-value" name="cate" />
       <div class="form-group category-wrapper">
+        <input type="text" style="display: none" id="cate-value" name="cate" />
         <label for="cate-slc" class="sub-heading-4">Thể loại</label>
         <select class="form-control sub-heading-4" id="cate-slc" multiple>
           {% for cate in data.categories %}
@@ -120,6 +117,19 @@ body %}
         >
           {% for author in data.author %}
           <option value="{{author.id}}">{{author.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group locate-wrapper">
+        <label for="locate-slc" class="sub-heading-4">Nơi lưu trữ</label>
+        <select
+          class="form-control sub-heading-4"
+          name="locate"
+          id="locate-slc"
+        >
+          {% for locate in data.locations %}
+          <option value="{{locate.id}}">{{locate.name}}</option>
           {% endfor %}
         </select>
       </div>
@@ -157,6 +167,11 @@ body %}
     minimumResultsForSearch: Infinity,
     selectionCssClass: "select-wrapper",
     placeholder: "Chủ đề sách",
+  });
+  var $locate = $("#locate-slc");
+  $locate.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "locate-select-wrapper",
   });
   $cate.on("change", function () {
     $("#cate-value").val($cate.val().join(","));

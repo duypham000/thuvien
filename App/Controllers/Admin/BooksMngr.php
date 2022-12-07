@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Models\Author;
 use App\Models\Books;
 use App\Models\Category;
+use App\Models\Location;
 use \Core\View;
 
 /**
@@ -32,13 +33,25 @@ class BooksMngr extends \Core\Controller
         $uploadFileRes = move_uploaded_file($tempname, $folder);
 
         $title = $_POST['title'];
-        $price = $_POST['price'];
         $description = $_POST['description'];
+        $locationId = $_POST['locate'];
         $cate = $_POST['cate'];
         $author = $_POST['author'];
         $quantity = $_POST['quantity'];
-        $quantityLeft = $_POST['quantityLeft'];
-        $res = Books::insert($title, $description, $price, $filename, $cate, $author, $quantity, $quantityLeft);
+        $numOfGood = $_POST['numOfGood'];
+        $dateIn = $_POST['dateIn'];
+
+        $res = Books::insert(
+          $title,
+          $description,
+          $filename,
+          $cate,
+          $author,
+          $quantity,
+          $numOfGood,
+          $locationId,
+          $dateIn
+        );
         if ($res == true) {
           $type = 'success';
           $notify = "Thêm mới thành công";
@@ -50,9 +63,6 @@ class BooksMngr extends \Core\Controller
       if ($_POST['action'] == "update") {
         $id = $_POST['id'];
         $imageName = Books::getById($id)["image"];
-        $followCount = Books::getById($id)["followCount"];
-        $orderCount = Books::getById($id)["orderCount"];
-        $imageName = Books::getById($id)["image"];
 
         if ($_FILES["image"]["name"] !== "") {
           $imageName = $_FILES["image"]["name"];
@@ -62,24 +72,24 @@ class BooksMngr extends \Core\Controller
         }
 
         $title = $_POST['title'];
-        $price = $_POST['price'];
         $description = $_POST['description'];
+        $locationId = $_POST['locate'];
         $cate = $_POST['cate'];
         $author = $_POST['author'];
         $quantity = $_POST['quantity'];
-        $quantityLeft = $_POST['quantityLeft'];
+        $numOfGood = $_POST['numOfGood'];
+        $dateIn = $_POST['dateIn'];
         $res = Books::update(
           $id,
           $title,
           $description,
-          $price,
           $imageName,
           $cate,
           $author,
           $quantity,
-          $followCount,
-          $orderCount,
-          $quantityLeft
+          $numOfGood,
+          $locationId,
+          $dateIn
         );
         if ($res == true) {
           $type = 'success';
@@ -103,6 +113,7 @@ class BooksMngr extends \Core\Controller
       }
     }
     $books = Books::getAll();
+    $res = [];
 
     foreach ($books as &$value) {
       $listCateName = "";
@@ -114,8 +125,14 @@ class BooksMngr extends \Core\Controller
         $cateName = Category::getById($valueCate)["name"];
         $listCateName .= $cateName;
       }
+      $value["locationId"] = Location::getById($value["locationId"])["name"];
       $value["authorId"] = Author::getById($value["authorId"])["name"];
       $value["categories"] = $listCateName;
+      if (!array_key_exists("q", $_GET)) {
+        array_push($res, $value);
+      } else if ($_GET["q"] === "" || strpos($value["title"], $_GET["q"])) {
+        array_push($res, $value);
+      }
     }
 
     View::renderTemplate('AdminDashboard/Books/index.html', [
@@ -131,7 +148,7 @@ class BooksMngr extends \Core\Controller
           'label' => "Danh sách đầu sách"
         ]
       ],
-      'books' => $books,
+      'books' => $res,
     ]);
   }
 
@@ -144,6 +161,7 @@ class BooksMngr extends \Core\Controller
   {
     $categories = Category::getAll();
     $authors = Author::getAll();
+    $locations = Location::getAll();
     View::renderTemplate('AdminDashboard/Books/insert.html', [
       'status' => 'OK',
       'location' => [
@@ -159,6 +177,7 @@ class BooksMngr extends \Core\Controller
       'data' => [
         'categories' => $categories,
         'author' => $authors,
+        'locations' => $locations,
       ]
     ]);
   }
@@ -173,6 +192,7 @@ class BooksMngr extends \Core\Controller
     $id = $this->route_params['id'];
     $categories = Category::getAll();
     $authors = Author::getAll();
+    $locations = Location::getAll();
     $book = Books::getById($id);
     View::renderTemplate('AdminDashboard/Books/update.html', [
       'status' => 'OK',
@@ -190,6 +210,7 @@ class BooksMngr extends \Core\Controller
       'data' => [
         'categories' => $categories,
         'author' => $authors,
+        'locations' => $locations,
       ],
     ]);
   }

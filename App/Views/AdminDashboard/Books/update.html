@@ -42,15 +42,15 @@ body %}
       </div>
 
       <div class="form-group">
-        <label for="price-inpt" class="sub-heading-4">Giá niêm yết</label>
+        <label for="price-inpt" class="sub-heading-4">Ngày nhập</label>
         <input
-          type="number"
+          type="date"
           class="form-control sub-heading-4"
           id="price-inpt"
-          placeholder="Giá niêm yết"
+          placeholder="Ngày nhập"
           required
-          name="price"
-          value="{{book.price}}"
+          name="dateIn"
+          value="{{book.dateIn}}"
         />
       </div>
 
@@ -68,15 +68,15 @@ body %}
       </div>
 
       <div class="form-group">
-        <label for="quantityLeft-inpt" class="sub-heading-4">Số lượng còn lại</label>
+        <label for="quantityLeft-inpt" class="sub-heading-4">Số lượng còn tốt</label>
         <input
           type="number"
           class="form-control sub-heading-4"
-          id="quantityLeft-inpt"
-          placeholder="Số lượng còn lại"
+          id="quantityGood-inpt"
+          placeholder="Số lượng còn tốt"
           required
-          name="quantityLeft"
-          value="{{book.quantityLeft}}"
+          name="numOfGood"
+          value="{{book.numOfGood}}"
         />
       </div>
 
@@ -141,6 +141,21 @@ body %}
         </select>
       </div>
 
+      <div class="form-group locate-wrapper">
+        <label for="locate-slc" class="sub-heading-4">Nơi lưu trữ</label>
+        <select
+          class="form-control sub-heading-4"
+          name="locate"
+          id="locate-slc"
+        >
+          {% for locate in data.locations %}
+          <option value="{{locate.id}}" {% if locate.id == book.locationId%} selected {% endif %}>
+            {{locate.name}}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
       <button
         type="submit"
         class="btn btn-outline-info btn-lg btn-block sub-heading-2"
@@ -167,6 +182,12 @@ body %}
   $author.select2({
     minimumResultsForSearch: Infinity,
     selectionCssClass: "author-select-wrapper",
+  });
+
+  var $locate = $("#locate-slc");
+  $locate.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "locate-select-wrapper",
   });
 
   var $cate = $("#cate-slc");

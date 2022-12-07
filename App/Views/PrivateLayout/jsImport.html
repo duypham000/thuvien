@@ -9,6 +9,8 @@
     if (getCookie("username") && getCookie("role")) {
       $(".sidebar-show > .user .user-name").text(getCookie("username"));
       $(".sidebar-show > .user .user-role").text(getCookie("role"));
+    } else {
+      window.location = "/login";
     }
 
     $("#btn-show-sidebar").on("click", function () {

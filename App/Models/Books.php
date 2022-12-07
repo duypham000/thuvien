@@ -45,27 +45,25 @@ class Books extends \Core\Model
         $id,
         $title,
         $desc,
-        $price,
         $image,
         $categories,
         $authorId,
         $quantity,
-        $followCount,
-        $orderCount,
-        $quantityLeft
+        $numOfGood,
+        $locationId,
+        $dateIn
     ) {
         try {
             $db = static::getDB();
             $db->query('UPDATE books SET title = "' . $title .
                 '", description = "' . $desc .
-                '", price = "' . $price .
                 '", image = "' . $image .
                 '", categories = "' . $categories .
                 '", authorId = "' . $authorId .
                 '", quantity = "' . $quantity .
-                '", followCount = "' . $followCount .
-                '", orderCount = "' . $orderCount .
-                '", quantityLeft = "' . $quantityLeft .
+                '", locationId = "' . $locationId .
+                '", numOfGood = "' . $numOfGood .
+                '", dateIn = "' . $dateIn .
                 '" WHERE id = ' . $id . ' ');
             return true;
         } catch (\Throwable $th) {
@@ -113,19 +111,29 @@ class Books extends \Core\Model
      *
      * @return bool
      */
-    public static function insert($title, $desc, $price, $image, $categories, $authorId, $quantity, $quantityLeft)
-    {
+    public static function insert(
+        $title,
+        $desc,
+        $image,
+        $categories,
+        $authorId,
+        $quantity,
+        $numOfGood,
+        $locationId,
+        $dateIn
+    ) {
         try {
             $db = static::getDB();
-            $db->query('INSERT INTO books (id, title, description, price, image, categories, authorId, quantity, quantityLeft) VALUES (NULL, "' .
+            $db->query('INSERT INTO books (id, title, description, image, categories, authorId, quantity, numOfGood, locationId, dateIn) VALUES (NULL, "' .
                 $title . '","' .
                 $desc . '","' .
-                $price . '","' .
                 $image . '","' .
                 $categories . '","' .
                 $authorId . '","' .
                 $quantity . '","' .
-                $quantityLeft . '")');
+                $numOfGood . '","' .
+                $locationId . '","' .
+                $dateIn . '")');
             return true;
         } catch (\Throwable $th) {
             return false;

@@ -24,17 +24,34 @@ body %}
     <a href="/admin/books/them-moi" class="sub-heading-2 add-book-link"
       >Thêm mới</a
     >
+    <form class="form-group" action="/admin/books" method="get">
+      <input
+        type="text"
+        class="form-control sub-heading-4"
+        placeholder="Tựa đề"
+        id="search-title"
+        name="q"
+      />
+      <button
+        class="btn btn-success sub-heading-3"
+        type="submit"
+        style="margin-left: 8px"
+      >
+        Tìm kiếm
+      </button>
+    </form>
     <table class="table table-hover table-dark body-2">
       <thead>
         <tr class="heading-3">
           <th scope="col">Ảnh bìa</th>
           <th scope="col">Tựa đề</th>
-          <th scope="col">Giá</th>
+          <th scope="col">Ngày nhập</th>
           <th scope="col">Nội dung</th>
           <th scope="col">Thể loại</th>
           <th scope="col">Tác giả</th>
           <th scope="col">Số lượng</th>
-          <th scope="col">Số lượng còn lại</th>
+          <th scope="col">Số lượng còn tốt</th>
+          <th scope="col">Vị trí</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -47,14 +64,15 @@ body %}
             </div>
           </td>
           <td>{{book.title}}</td>
-          <td>{{book.price}}</td>
+          <td>{{book.dateIn}}</td>
           <td class="book-desc">
             <span>{{book.description}}</span>
           </td>
           <td>{{book.categories}}</td>
           <td>{{book.authorId}}</td>
           <td>{{book.quantity}}</td>
-          <td>{{book.quantityLeft}}</td>
+          <td>{{book.numOfGood}}</td>
+          <td>{{book.locationId}}</td>
           <td>
             <a
               href="/admin/books/cap-nhat/{{book.id}}"
