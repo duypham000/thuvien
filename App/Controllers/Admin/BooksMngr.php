@@ -7,6 +7,9 @@ use App\Models\Books;
 use App\Models\Category;
 use App\Models\Location;
 use \Core\View;
+use LengthException;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 /**
  * Home controller
@@ -15,7 +18,6 @@ use \Core\View;
  */
 class BooksMngr extends \Core\Controller
 {
-
   /**
    * Show the index page
    *
@@ -132,6 +134,41 @@ class BooksMngr extends \Core\Controller
         array_push($res, $value);
       } else if ($_GET["q"] === "" || strpos($value["title"], $_GET["q"])) {
         array_push($res, $value);
+      }
+    }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if ($_POST['action'] == "export") {
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('A1', 'id');
+        $sheet->setCellValue('B1', 'Tựa đề');
+        $sheet->setCellValue('C1', 'Nội dung');
+        $sheet->setCellValue('D1', 'Ảnh');
+        $sheet->setCellValue('E1', 'Thể loại');
+        $sheet->setCellValue('F1', 'Tác giả');
+        $sheet->setCellValue('G1', 'Số lượng');
+        $sheet->setCellValue('H1', 'Vị trí');
+        $sheet->setCellValue('I1', 'Số sách còn nguyên vẹn');
+        $sheet->setCellValue('J1', 'Ngày nhập');
+
+        for ($i = 0; $i < count($res); $i++) {
+          $sheet->setCellValue('A' . ($i + 2), $res[$i]["id"]);
+          $sheet->setCellValue('B' . ($i + 2), $res[$i]["title"]);
+          $sheet->setCellValue('C' . ($i + 2), $res[$i]["description"]);
+          $sheet->setCellValue('D' . ($i + 2), $res[$i]["image"]);
+          $sheet->setCellValue('E' . ($i + 2), $res[$i]["categories"]);
+          $sheet->setCellValue('F' . ($i + 2), $res[$i]["authorId"]);
+          $sheet->setCellValue('G' . ($i + 2), $res[$i]["quantity"]);
+          $sheet->setCellValue('H' . ($i + 2), $res[$i]["locationId"]);
+          $sheet->setCellValue('I' . ($i + 2), $res[$i]["numOfGood"]);
+          $sheet->setCellValue('J' . ($i + 2), $res[$i]["dateIn"]);
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('books.xlsx');
+        $type = 'success';
+        $notify = "Xuất thành công, nhấn <a href=\"/books.xlsx\" style=\"color: blue\">vào đây</a> để tải về";
       }
     }
 

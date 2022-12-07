@@ -18,7 +18,7 @@ body %}
     <div class="heading-1 title">Danh sách đầu sách</div>
     {% if notify.type != NULL %}
     <div class="alert alert-{{notify.type}} body-2" role="alert">
-      {{notify.detail}}
+      {{notify.detail | raw}}
     </div>
     {% endif %}
     <a href="/admin/books/them-moi" class="sub-heading-2 add-book-link"
@@ -38,6 +38,17 @@ body %}
         style="margin-left: 8px"
       >
         Tìm kiếm
+      </button>
+    </form>
+    <form class="form-group" action="/admin/books" method="post">
+      <button
+        class="btn btn-success sub-heading-3"
+        type="submit"
+        name="action"
+        value="export"
+        style="margin-left: 8px"
+      >
+        Xuất
       </button>
     </form>
     <table class="table table-hover table-dark body-2">
