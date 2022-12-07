@@ -60,6 +60,14 @@ class AuthorMngr extends \Core\Controller
       }
     }
     $authors = Author::getAll();
+    $res = [];
+    foreach ($authors as &$value) {
+      if (!array_key_exists("q", $_GET)) {
+        array_push($res, $value);
+      } else if ($_GET["q"] === "" || strpos($value["name"], $_GET["q"])) {
+        array_push($res, $value);
+      }
+    }
     View::renderTemplate('AdminDashboard/Author/index.html', [
       'status' => 'OK',
       'notify' => ['type' => $type, 'detail' => $notify],
@@ -73,7 +81,7 @@ class AuthorMngr extends \Core\Controller
           'label' => "Danh sách tác giả"
         ]
       ],
-      'authors' => $authors,
+      'authors' => $res,
     ]);
   }
 

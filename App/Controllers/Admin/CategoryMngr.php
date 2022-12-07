@@ -61,6 +61,14 @@ class CategoryMngr extends \Core\Controller
       }
     }
     $categories = Category::getAll();
+    $res = [];
+    foreach ($categories as &$value) {
+      if (!array_key_exists("q", $_GET)) {
+        array_push($res, $value);
+      } else if ($_GET["q"] === "" || strpos($value["name"], $_GET["q"])) {
+        array_push($res, $value);
+      }
+    }
     View::renderTemplate('AdminDashboard/Category/index.html', [
       'status' => 'OK',
       'notify' => ['type' => $type, 'detail' => $notify],
@@ -74,7 +82,7 @@ class CategoryMngr extends \Core\Controller
           'label' => "Danh sách thể loại"
         ]
       ],
-      'categories' => $categories,
+      'categories' => $res,
     ]);
   }
 

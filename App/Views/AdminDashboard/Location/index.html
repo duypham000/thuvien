@@ -51,6 +51,22 @@ body %}
       </button>
     </form>
 
+    <form class="form-group" action="/admin/locations" method="get">
+      <input
+        type="text"
+        class="form-control sub-heading-4"
+        placeholder="Tên hoặc địa chi"
+        id="search-title"
+        name="q"
+      />
+      <button
+        class="btn btn-success sub-heading-3"
+        type="submit"
+        style="margin-left: 8px"
+      >
+        Tìm kiếm
+      </button>
+    </form>
     <table class="table table-hover table-dark body-2">
       <thead>
         <tr class="heading-3">
@@ -136,7 +152,11 @@ body %}
               </div>
             </div>
 
-            <form action="/admin/locations" method="post" style="display: inline">
+            <form
+              action="/admin/locations"
+              method="post"
+              style="display: inline"
+            >
               <input
                 type="text"
                 value="{{locate.id}}"

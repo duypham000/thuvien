@@ -22,6 +22,24 @@ body %}
     </div>
     {% endif %}
     <a href="/admin/users/them-moi" class="sub-heading-2 add-user">Thêm mới</a>
+
+    <form class="form-group" action="/admin/users" method="get">
+      <input
+        type="text"
+        class="form-control sub-heading-4"
+        placeholder="Tên user"
+        id="search-title"
+        name="q"
+      />
+      <button
+        class="btn btn-success sub-heading-3"
+        type="submit"
+        style="margin-left: 8px"
+      >
+        Tìm kiếm
+      </button>
+    </form>
+
     <table class="table table-hover table-dark body-2">
       <thead>
         <tr class="heading-3">

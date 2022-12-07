@@ -62,6 +62,14 @@ class LocationMngr extends \Core\Controller
       }
     }
     $Locations = Location::getAll();
+    $res = [];
+    foreach ($Locations as &$value) {
+      if (!array_key_exists("q", $_GET)) {
+        array_push($res, $value);
+      } else if ($_GET["q"] === "" || strpos($value["name"], $_GET["q"]) || strpos($value["location"], $_GET["q"])) {
+        array_push($res, $value);
+      }
+    }
     View::renderTemplate('AdminDashboard/Location/index.html', [
       'status' => 'OK',
       'notify' => ['type' => $type, 'detail' => $notify],
@@ -75,7 +83,7 @@ class LocationMngr extends \Core\Controller
           'label' => "Danh sách kho"
         ]
       ],
-      'locations' => $Locations,
+      'locations' => $res,
     ]);
   }
 

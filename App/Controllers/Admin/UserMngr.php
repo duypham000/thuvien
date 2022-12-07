@@ -64,6 +64,14 @@ class UserMngr extends \Core\Controller
       }
     }
     $users = User::getAll();
+    $res = [];
+    foreach ($users as &$value) {
+      if (!array_key_exists("q", $_GET)) {
+        array_push($res, $value);
+      } else if ($_GET["q"] === "" || strpos($value["username"], $_GET["q"])) {
+        array_push($res, $value);
+      }
+    }
     View::renderTemplate('AdminDashboard/User/index.html', [
       'status' => 'OK',
       'notify' => ['type' => $type, 'detail' => $notify],
@@ -77,7 +85,7 @@ class UserMngr extends \Core\Controller
           'label' => "Danh sách user"
         ]
       ],
-      'users' => $users,
+      'users' => $res,
     ]);
   }
 
