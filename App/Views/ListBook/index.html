@@ -1,43 +1,154 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block body %}
-
-<div class="container">
-  <div class="navigation-wrapper">
-    <a href="/">
-      <i class="fa-solid fa-house"></i>
-      <span class="sub-heading-4">Trang chủ</span>
-    </a>
-    {% for locate in location %}
-    <span><i class="fas fa-greater-than"></i></span>
-    <a href="{{locate.url}}">
-      <span class="sub-heading-4">{{locate.label}}</span>
-    </a>
-    {% endfor %}
-  </div>
-  <div class="row justify-content-between">
-    <div class="heading-2">{{title}}</div>
-    <div class="col-12">
-      <div class="row list-wrapper">
-        {% for book in data.books %}
-        <div class="book">
-          <a href="{{book.href}}" class="book-wrapper">
-            <div class="image">
-              <img src="{{book.thumble}}" alt="" />
-            </div>
-            <div class="book-dt">
-              <div class="heading-3 title">{{book.title}}</div>
-              <div class="sub-heading-3 detail">
-                <span>{{book.price}}</span>
-                <i class="fas fa-circle"></i>
-                <span>{{book.author}}</span>
-              </div>
-            </div>
-          </a>
+<div class="container-list">
+  <div class="row">
+    <div class="col-2 body-2 list-wrapper">
+      <div class="heading-2 title">Lọc</div>
+      <form
+        class="input-form"
+        action="/"
+        method="get"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label for="title-inpt" class="sub-heading-4"
+            >Tựa đề hoặc nội dung</label
+          >
+          <input
+            type="text"
+            class="form-control sub-heading-4"
+            id="title-inpt"
+            placeholder="Từ khóa"
+            value="{{temp.keyword}}"
+            name="keyword"
+          />
         </div>
-        {% endfor %}
+
+        <div class="form-group">
+          <label for="price-inpt" class="sub-heading-4">Nhập sau ngày</label>
+          <input
+            type="date"
+            class="form-control sub-heading-4"
+            id="price-inpt"
+            placeholder="Ngày tháng"
+            value="{{temp.dateTo}}"
+            name="dateTo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="price-inpt" class="sub-heading-4">Nhập trước ngày</label>
+          <input
+            type="date"
+            class="form-control sub-heading-4"
+            id="price-inpt"
+            placeholder="Ngày tháng"
+            value="{{temp.dateFrom}}"
+            name="dateFrom"
+          />
+        </div>
+
+        <div class="form-group category-wrapper">
+          <input
+            type="text"
+            style="display: none"
+            id="cate-value"
+            value="{{temp.cate}}"
+            name="cate"
+          />
+          <label for="cate-slc" class="sub-heading-4">Thể loại</label>
+          <select class="form-control sub-heading-4" id="cate-slc" multiple>
+            {% for cate in data.categories %}
+            <option value="{{cate.id}}" data-badge="">{{cate.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group author-wrapper">
+          <label for="author-slc" class="sub-heading-4">Tác giả</label>
+          <select
+            class="form-control sub-heading-4"
+            name="author"
+            id="author-slc"
+          >
+            <option value="-1" checked>Tất cả</option>
+            {% for author in data.author %}
+            <option value="{{author.id}}" {% if author.id == temp.author %} selected {% endif %}>{{author.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group locate-wrapper">
+          <label for="locate-slc" class="sub-heading-4">Nơi lưu trữ</label>
+          <select
+            class="form-control sub-heading-4"
+            name="locate"
+            id="locate-slc"
+          >
+            <option value="-1" checkde>Tất cả</option>
+            {% for locate in data.locations %}
+            <option value="{{locate.id}}" {% if locate.id == temp.locate%} selected {% endif %}>{{locate.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-outline-info btn-lg btn-block sub-heading-2"
+          id="act"
+        >
+          Tìm kiếm
+        </button>
+      </form>
+    </div>
+    <div class="col-10">
+      <div class="heading-2" style="width: fit-content; height: fit-content">
+        {{title}}
+      </div>
+      <div class="col-12">
+        <div class="row">
+          {% for book in data.books %}
+          <div class="book">
+            <a href="{{book.href}}" class="book-wrapper">
+              <div class="image">
+                <img src="{{book.thumble}}" alt="" />
+              </div>
+              <div class="book-dt">
+                <div class="heading-3 title">{{book.title}}</div>
+                <div class="sub-heading-3 detail">
+                  <span>{{book.author}}</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
 </div>
 {% endblock %} {% block css %}
 <link rel="stylesheet" href="/assets/css/listbook.css" />
-{% endblock %} {% block js %} {% endblock %}
+{% endblock %} {% block js %}
+<script>
+  var $author = $("#author-slc");
+  $author.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "author-select-wrapper",
+  });
+
+  var $cate = $("#cate-slc");
+  $cate.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "select-wrapper",
+    placeholder: "Chủ đề sách",
+  });
+  var $locate = $("#locate-slc");
+  $locate.select2({
+    minimumResultsForSearch: Infinity,
+    selectionCssClass: "locate-select-wrapper",
+  });
+  $cate.on("change", function () {
+    $("#cate-value").val($cate.val().join("q"));
+  });
+</script>
+{% endblock %}

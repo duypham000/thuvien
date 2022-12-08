@@ -1,12 +1,17 @@
 <script src="/assets/libs/jquery-3.6.1.min.js"></script>
 <script src="/assets/libs/bootstrap-5.2.2/js/bootstrap.min.js"></script>
 <script src="/assets/libs/bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/libs/select2-4.1.0-rc.0/dist/js/select2.full.min.js"></script>
 <script src="/assets/js/authen.js"></script>
 
 <script>
   $(function () {
     if (getCookie("username")) {
       $(".sidebar > .user").text(getCookie("username"));
+    }
+
+    if (getCookie("username") === "" && getCookie("role") === "") {
+      window.location = "/login";
     }
   });
 </script>

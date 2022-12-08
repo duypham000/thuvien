@@ -6,7 +6,7 @@
 
 <script>
   $(function () {
-    if (getCookie("username") && getCookie("role")) {
+    if (getCookie("username") && getCookie("role") === "admin") {
       $(".sidebar-show > .user .user-name").text(getCookie("username"));
       $(".sidebar-show > .user .user-role").text(getCookie("role"));
     } else {

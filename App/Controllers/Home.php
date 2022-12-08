@@ -30,7 +30,6 @@ class Home extends \Core\Controller
                 "title" => $book["title"],
                 "href" => "/sach/" . $book["id"],
                 "author" => Author::getById($book["authorId"])["name"],
-                "price" => number_format($book["price"], 0, ",", ".") . "đ",
                 "thumble" => "/assets/images/" . $book["image"],
             ]);
         }
