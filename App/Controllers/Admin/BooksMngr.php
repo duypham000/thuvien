@@ -132,7 +132,7 @@ class BooksMngr extends \Core\Controller
       $value["categories"] = $listCateName;
       if (!array_key_exists("q", $_GET)) {
         array_push($res, $value);
-      } else if ($_GET["q"] === "" || strpos($value["title"], $_GET["q"])) {
+      } else if ($_GET["q"] === "" || strlen(strstr($value["title"], $_GET["q"])) > 0) {
         array_push($res, $value);
       }
     }

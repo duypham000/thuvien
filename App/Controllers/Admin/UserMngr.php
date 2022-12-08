@@ -68,7 +68,7 @@ class UserMngr extends \Core\Controller
     foreach ($users as &$value) {
       if (!array_key_exists("q", $_GET)) {
         array_push($res, $value);
-      } else if ($_GET["q"] === "" || strpos($value["username"], $_GET["q"])) {
+      } else if ($_GET["q"] === "" || strlen(strstr($value["username"], $_GET["q"])) > 0) {
         array_push($res, $value);
       }
     }
